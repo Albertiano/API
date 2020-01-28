@@ -1,0 +1,56 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.0.M1'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'br.com.eiasiscon'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url "https://oss.sonatype.org/content/repositories/snapshots"}
+	maven { url "http://jaspersoft.artifactoryonline.com/jaspersoft/third-party-ce-artifacts/" }
+    maven { url "http://jasperreports.sourceforge.net/maven2/" }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'org.postgresql:postgresql'
+
+	compile('org.apache.commons:commons-lang3:3.7')
+	compile('io.jsonwebtoken:jjwt:0.9.1')	
+	compile('org.apache.commons:commons-csv:1.5')	
+	compile('br.com.swconsultoria:java-nfe:4.00.12')
+	compile('net.sf.jasperreports:jasperreports:6.7.0')
+	compile('net.sourceforge.barbecue:barbecue:1.5-beta1')
+	compile('com.google.zxing:javase:3.3.3')
+	compile('com.google.zxing:core:3.3.3')
+	compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+			
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	
+	compileOnly("org.springframework.boot:spring-boot-configuration-processor")
+}
+
+sourceSets.configureEach { sourceSet ->
+    tasks.named(sourceSet.compileJavaTaskName).configure {
+        options.annotationProcessorGeneratedSourcesDirectory = file("$buildDir/generated/java")
+    }
+}

@@ -7,6 +7,6 @@ import br.com.eiasiscon.empresa.Empresa;
 
 public interface EmpresaRepositoryCustom{	
 
-	Page<Empresa> find(String q, String user, Pageable page);
+	Page<Empresa> find(String q, Long user, Pageable page);
 
 }

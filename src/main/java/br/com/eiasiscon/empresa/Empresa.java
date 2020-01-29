@@ -2,10 +2,10 @@ package br.com.eiasiscon.empresa;
 
 import java.util.Collection;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.contato.TpDoc;
@@ -14,10 +14,8 @@ import br.com.eiasiscon.municipio.Municipio;
 import br.com.eiasiscon.pais.Pais;
 import br.com.eiasiscon.security.user.entity.User;
 
-@Document
+@Entity
 public class Empresa extends BaseEntity {
-
-	private static final long serialVersionUID = 1L;
 	
     private TpDoc tpDoc;
     private String numDoc;
@@ -32,15 +30,15 @@ public class Empresa extends BaseEntity {
     private String bairro;
     private String cep;
     @NotNull
-    @DBRef
+    @ManyToOne
     private Municipio municipio;
     @NotNull
-    @DBRef
+    @ManyToOne
     private Pais pais;
     private String fantasia;
     private String IEST;
     private CRT crt;
-    @DBRef
+    @ManyToMany
     private Collection<User> users;
     
 	public TpDoc getTpDoc() {

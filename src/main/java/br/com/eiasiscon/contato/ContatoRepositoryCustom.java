@@ -7,5 +7,5 @@ import br.com.eiasiscon.contato.Contato;
 
 public interface ContatoRepositoryCustom {	
 	
-	Page<Contato> find(String q, String empresa, Pageable page);
+	Page<Contato> find(String q, Long empresa, Pageable page);
 }

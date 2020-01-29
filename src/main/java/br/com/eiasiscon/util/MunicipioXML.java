@@ -35,7 +35,7 @@ public class MunicipioXML {
                     p.setxMun(obterValorElemento(element, "xMun"));
                 }
                 if(obterValorElemento(element, "UF")!=null){
-                    p.setUF(UF.valueOf((obterValorElemento(element, "UF"))));
+                    p.setUf(UF.valueOf((obterValorElemento(element, "UF"))));
                 }
                 municipios.add(p);      
         }

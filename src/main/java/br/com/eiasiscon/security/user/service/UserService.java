@@ -12,7 +12,7 @@ import br.com.eiasiscon.security.user.entity.User;
 import br.com.eiasiscon.security.user.repository.UserRepository;
 
 @Service
-public class UserService extends BaseService<User, String> {
+public class UserService extends BaseService<User, Long> {
 	
 	@Autowired
     private UserRepository repository;

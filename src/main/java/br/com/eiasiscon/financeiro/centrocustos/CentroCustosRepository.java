@@ -1,8 +1,8 @@
 package br.com.eiasiscon.financeiro.centrocustos;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CentroCustosRepository extends MongoRepository<CentroCustos, String>, CentroCustosRepositoryCustom {
+public interface CentroCustosRepository extends JpaRepository<CentroCustos, Long>, CentroCustosRepositoryCustom {
 }

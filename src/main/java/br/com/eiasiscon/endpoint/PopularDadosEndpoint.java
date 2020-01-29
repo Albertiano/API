@@ -79,36 +79,26 @@ public class PopularDadosEndpoint {
 		if(gerarUser) {
 			Privilege pADMIN = new Privilege();
 	    	pADMIN.setActive(true);
-	    	pADMIN.setCreatedAt(new Date());
-	    	pADMIN.setUpdatedAt(new Date());
 	    	pADMIN.setName("ADMIN");
 	    	//privilegeRepository.save(pADMIN);
 	    	
 	    	Privilege pUSER = new Privilege();
 	    	pUSER.setActive(true);
-	    	pUSER.setCreatedAt(new Date());
-	    	pUSER.setUpdatedAt(new Date());
 	    	pUSER.setName("USER");
 	    	//privilegeRepository.save(pUSER);
 	    	
 	    	Privilege pPROD = new Privilege();
 	    	pPROD.setActive(true);
-	    	pPROD.setCreatedAt(new Date());
-	    	pPROD.setUpdatedAt(new Date());
 	    	pPROD.setName("PROD");
 	    	//privilegeRepository.save(pPROD);
 	    	
 	    	Privilege pDESEN = new Privilege();
 	    	pDESEN.setActive(true);
-	    	pDESEN.setCreatedAt(new Date());
-	    	pDESEN.setUpdatedAt(new Date());
 	    	pDESEN.setName("DES");
 	    	//privilegeRepository.save(pDESEN);
 	    	
 	    	Role r = new Role();
 	    	r.setActive(true);
-	    	r.setCreatedAt(new Date());
-	    	r.setUpdatedAt(new Date());
 	    	r.setName("ADMIN");
 	    	
 
@@ -126,8 +116,6 @@ public class PopularDadosEndpoint {
 	    	user.setRoles(lR);   	
 	    	user.getRoles().add(r);
 	    	user.setActive(true);
-	    	user.setCreatedAt(new Date());
-	    	user.setUpdatedAt(new Date());
 	    	user.setEmail("admin@admin.com");
 	    	user.setLastName("Admin");
 	    	user.setName("Administrador");    	

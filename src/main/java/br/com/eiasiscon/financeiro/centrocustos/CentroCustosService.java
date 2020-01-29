@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.eiasiscon.base.BaseService;
 
 @Service
-public class CentroCustosService extends BaseService<CentroCustos, String> {
+public class CentroCustosService extends BaseService<CentroCustos, Long> {
 	
 	@Autowired
 	private CentroCustosRepository repository;
@@ -18,7 +18,7 @@ public class CentroCustosService extends BaseService<CentroCustos, String> {
 		setJpa(jpa);
 	}
 	
-	public Page<CentroCustos> find(String query, String empresa, Pageable pageable) {
+	public Page<CentroCustos> find(String query, Long empresa, Pageable pageable) {
 		Page<CentroCustos>  entities = repository.find(query, empresa, pageable);
 		return entities;
 	}

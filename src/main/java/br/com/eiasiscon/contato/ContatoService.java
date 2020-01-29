@@ -10,7 +10,7 @@ import br.com.eiasiscon.contato.Contato;
 import br.com.eiasiscon.contato.ContatoRepository;
 
 @Service
-public class ContatoService extends BaseService<Contato, String> {
+public class ContatoService extends BaseService<Contato, Long> {
 	
 	@Autowired
 	ContatoRepository repository;
@@ -20,7 +20,7 @@ public class ContatoService extends BaseService<Contato, String> {
 		setJpa(jpa);
 	}
 	
-	public Page<Contato> find(String query, String empresa, Pageable pageable) {
+	public Page<Contato> find(String query, Long empresa, Pageable pageable) {
 		Page<Contato>  entities = repository.find(query, empresa, pageable);
 		return entities;
 	}

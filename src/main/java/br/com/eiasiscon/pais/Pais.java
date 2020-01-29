@@ -16,6 +16,8 @@ public class Pais extends BaseEntity  implements Serializable{
 		this.cPais = cPais;
 		this.xPais = xPais;
 	}
+	public Pais() {
+	}
 	public int getcPais() {
 		return cPais;
 	}

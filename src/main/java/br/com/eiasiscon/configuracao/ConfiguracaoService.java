@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import br.com.eiasiscon.base.BaseService;
 
 @Service
-public class ConfiguracaoService extends BaseService<Configuracao, String> {
+public class ConfiguracaoService extends BaseService<Configuracao, Long> {
 	
 	@Autowired
 	private ConfiguracaoRepository repository;
@@ -16,7 +16,7 @@ public class ConfiguracaoService extends BaseService<Configuracao, String> {
 		setJpa(jpa);
 	}
 	
-	public Configuracao getConfiguracao(String empresa) {
+	public Configuracao getConfiguracao(Long empresa) {
 		return repository.getConfiguracao(empresa);
 	}
 	

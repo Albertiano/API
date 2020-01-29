@@ -26,7 +26,7 @@ public class ConfiguracaoEndpoint {
 	private ConfiguracaoService service;
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Configuracao> recuperar(@PathVariable String id) {
+	public ResponseEntity<Configuracao> recuperar(@PathVariable Long id) {
 		Configuracao entity = service.retrieve(id);
 		return entity != null ? ResponseEntity.ok(entity) : ResponseEntity.notFound().build();
 	}
@@ -39,18 +39,18 @@ public class ConfiguracaoEndpoint {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable String id) {
+	public void remover(@PathVariable Long id) {
 		service.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Configuracao> atualizar(@PathVariable String id, @Valid @RequestBody Configuracao entity) {
+	public ResponseEntity<Configuracao> atualizar(@PathVariable Long id, @Valid @RequestBody Configuracao entity) {
 		Configuracao entitySaved = service.update(id, entity);
 		return ResponseEntity.ok(entitySaved);
 	}
 	
 	@GetMapping("/empresa={empresa}")
-	public ResponseEntity<Configuracao> get(@PathVariable String empresa) {
+	public ResponseEntity<Configuracao> get(@PathVariable Long empresa) {
 		Configuracao entity = service.getConfiguracao(empresa);
 		return entity != null ? ResponseEntity.ok(entity) : ResponseEntity.notFound().build();
 	}

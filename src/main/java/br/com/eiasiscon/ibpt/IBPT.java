@@ -2,15 +2,15 @@ package br.com.eiasiscon.ibpt;
 
 import java.time.LocalDate;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import br.com.eiasiscon.base.BaseEntity;
 
-@Document(collection="IBPT")
+@Entity
+@Table(name = "IBPT")
 public class IBPT  extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
 	String codigo;
 	String tipo;
 	String descricao;

@@ -1,8 +1,8 @@
 package br.com.eiasiscon.nfe.common;
 
 public class NFeDTO {
-	private String empresaID;
-	private String idNota;
+	private Long empresaID;
+	private Long idNota;
 	private String uf;
 	private String numDoc;
 	private String status;
@@ -48,10 +48,10 @@ public class NFeDTO {
 	public void setRecibo(String nRecibo) {
 		this.recibo = nRecibo;
 	}
-	public String getIdNota() {
+	public Long getIdNota() {
 		return idNota;
 	}
-	public void setIdNota(String idNota) {
+	public void setIdNota(Long idNota) {
 		this.idNota = idNota;
 	}
 	public String getUf() {
@@ -66,10 +66,10 @@ public class NFeDTO {
 	public void setNumDoc(String numDoc) {
 		this.numDoc = numDoc;
 	}
-	public String getEmpresaID() {
+	public Long getEmpresaID() {
 		return empresaID;
 	}
-	public void setEmpresaID(String empresaID) {
+	public void setEmpresaID(Long empresaID) {
 		this.empresaID = empresaID;
 	}
 }

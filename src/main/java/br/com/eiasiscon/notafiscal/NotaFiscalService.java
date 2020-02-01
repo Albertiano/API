@@ -44,7 +44,7 @@ import br.com.eiasiscon.produto.tributacao.pis.PIS;
 import br.com.eiasiscon.produto.tributacao.pis.PISST;
 
 @Service
-public class NotaFiscalService extends BaseService<NotaFiscal, String> {
+public class NotaFiscalService extends BaseService<NotaFiscal, Long> {
 	
 	@Autowired
 	private NotaFiscalRepository repository;
@@ -60,12 +60,12 @@ public class NotaFiscalService extends BaseService<NotaFiscal, String> {
 		setJpa(jpa);
 	}
 	
-	public Page<NotaFiscal> find(String query, String empresa, Pageable pageable) {
+	public Page<NotaFiscal> find(String query, Long empresa, Pageable pageable) {
 		Page<NotaFiscal>  entities = repository.find(query, empresa, pageable);
 		return entities;
 	}
 	
-	public byte[] exportar(String id) {
+	public byte[] exportar(Long id) {
 		try {
 			NotaFiscal nf = repository.findById(id).get();
 
@@ -123,14 +123,14 @@ public class NotaFiscalService extends BaseService<NotaFiscal, String> {
 		return null;
 	}
 	
-	public byte[] exportar(String[] idNota) {
+	public byte[] exportar(Long[] idNota) {
 		try {
 		
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(byteArrayOutputStream);
         ZipOutputStream zipOutputStream = new ZipOutputStream(bufferedOutputStream);
         
-        for(String id : idNota) {
+        for(Long id : idNota) {
 			NotaFiscal nf = repository.findById(id).get();
         	
         	if(nf.getSitNfe().equals("Autorizada")) {
@@ -183,7 +183,7 @@ public class NotaFiscalService extends BaseService<NotaFiscal, String> {
 		return null;
 	}
 	
-	public byte[] gerarZip(Date ini, Date fim, String empresa) {
+	public byte[] gerarZip(Date ini, Date fim, Long empresa) {
 		try {
 		
 		List<NotaFiscal> list = repository.findByEmissao(ini, fim, empresa);
@@ -268,7 +268,7 @@ public class NotaFiscalService extends BaseService<NotaFiscal, String> {
 		return pdv.getNumeroNFCe();
 	}
 	
-	public NotaFiscal duplicar(String id) {
+	public NotaFiscal duplicar(Long id) {
 		NotaFiscal entity = repository.findById(id).get();
 		entity.setId(null);
 		entity.setDhEmi(new Date());
@@ -282,7 +282,7 @@ public class NotaFiscalService extends BaseService<NotaFiscal, String> {
 		return repository.save(entity);
 	}
 	
-	public ItemNotaFiscal getItem(String idProd, BigDecimal quant, BigDecimal vUn, UF uf) {
+	public ItemNotaFiscal getItem(Long idProd, BigDecimal quant, BigDecimal vUn, UF uf) {
 		BigDecimal subtotal = quant.multiply(vUn).setScale(2, RoundingMode.HALF_UP);
 		ItemNotaFiscal i = new ItemNotaFiscal();
 		i.setProduto(repositoryProd.findById(idProd).get());

@@ -63,7 +63,7 @@ public class NFeService {
 	@Autowired
 	private StorageService storageService;
 	
-	public byte[] gerarPDF(String[] idNota) {
+	public byte[] gerarPDF(Long[] idNota) {
 		try {
 
 			HashMap<String, Object> parametros = new HashMap<String, Object>();
@@ -77,7 +77,7 @@ public class NFeService {
 			JasperPrint paginas = JasperFillManager.fillReport(jasperReport, parametros,new JREmptyDataSource());
 			paginas.removePage(0);
 			
-			for(String id : idNota) {
+			for(Long id : idNota) {
 				NotaFiscal nf = repository.findById(id).get();
 				if(nf.getXml() != null) {
 					InputStream stream = new ByteArrayInputStream(nf.getXml().getBytes());
@@ -99,7 +99,7 @@ public class NFeService {
 		return null;
 	}
 	
-	public byte[] GerarDanfe(String idNota) {
+	public byte[] GerarDanfe(Long idNota) {
 		NotaFiscal nf = repository.findById(idNota).get();
 		NFeGeradorDanfe gen= new NFeGeradorDanfe();
 		
@@ -107,16 +107,16 @@ public class NFeService {
 		return retorn;
 	}
 	
-	private ConfiguracoesNfe getConfig(String empresaID) {
+	private ConfiguracoesNfe getConfig(Long empresaID) {
 		Certificado certificado = new Certificado();
 		ConfiguracoesNfe config = null;
 		try {
 			Empresa empresa = empresaRepository.findById(empresaID).get();
 			Configuracao configuracao = configuracaoService.getConfiguracao(empresaID);
 			
-			certificado = CertificadoService.certificadoPfx(storageService.getPath(empresaID, configuracao.getCertificadoFile()), configuracao.getCertificadoSenha());  
+			certificado = CertificadoService.certificadoPfx(storageService.getPath(empresaID.toString(), configuracao.getCertificadoFile()), configuracao.getCertificadoSenha());  
 			config = ConfiguracoesNfe.criarConfiguracoes(
-					EstadosEnum.valueOf(empresa.getMunicipio().getUF().toString()),
+					EstadosEnum.valueOf(empresa.getMunicipio().getUf().toString()),
 					AmbienteEnum.PRODUCAO,
 	                certificado,
 	                MethodHandles.lookup().lookupClass().getResource("/schemas").getPath());
@@ -127,7 +127,7 @@ public class NFeService {
 		return config;
 	}
 	
-	public TRetConsStatServ statusServico(String empresaID) {
+	public TRetConsStatServ statusServico(Long empresaID) {
 		TRetConsStatServ retorno = null;
 		try {
             retorno = Nfe.statusServico(getConfig(empresaID), DocumentoEnum.NFE);
@@ -142,7 +142,7 @@ public class NFeService {
 	
 	public NFeDTO enviar(NotaFiscal nf) {
 		String cnpj = nf.getEmpresa().getNumDoc().replaceAll("[^0-9,]", "");
-		String uf = nf.getEmitente().getMunicipio().getUF().toString();
+		String uf = nf.getEmitente().getMunicipio().getUf().toString();
 		
 		NFeDTO retorno = new NFeDTO();		
 		retorno.setUf(uf);

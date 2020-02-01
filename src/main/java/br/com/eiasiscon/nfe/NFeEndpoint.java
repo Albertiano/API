@@ -26,7 +26,7 @@ public class NFeEndpoint {
 	private NFeService service;
 	
 	@GetMapping("/status")
-	public ResponseEntity<TRetConsStatServ> statusServico(@RequestParam String empresaID) {
+	public ResponseEntity<TRetConsStatServ> statusServico(@RequestParam Long empresaID) {
 		
 		TRetConsStatServ retorn = service.statusServico(empresaID);
 		
@@ -34,7 +34,7 @@ public class NFeEndpoint {
 	}
 	
 	@GetMapping(value = "/danfe", produces = "application/pdf")
-	public ResponseEntity<byte[]> danfe(@RequestParam String idNota) {
+	public ResponseEntity<byte[]> danfe(@RequestParam Long idNota) {
 		
 		byte[] retorn = service.GerarDanfe(idNota);
 		
@@ -42,7 +42,7 @@ public class NFeEndpoint {
 	}
 	
 	@PostMapping(value = "/danfe", produces = "application/pdf")
-	public ResponseEntity<byte[]> danfes(@RequestBody String[] idNota) {
+	public ResponseEntity<byte[]> danfes(@RequestBody Long[] idNota) {
 		
 		byte[] retorn = service.gerarPDF(idNota);
 		

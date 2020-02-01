@@ -41,7 +41,7 @@ public class CentroCustosRepositoryImpl implements CentroCustosRepositoryCustom{
 		if ((q != null) && (!(q.isEmpty())) && (!q.equalsIgnoreCase("all"))) {
 			predicates.add(
 				cb.like(
-					cb.upper(from.<String> get("nome")),
+					cb.upper(from.<String> get("descricao")),
 					"%" + q.toUpperCase() + "%"));
 		}
 
@@ -50,7 +50,7 @@ public class CentroCustosRepositoryImpl implements CentroCustosRepositoryCustom{
 		query.select(from)
 			.where(cb.or(predicates.toArray(new Predicate[predicates.size()])));
 
-		query.orderBy(cb.asc(from.get("nome")));
+		query.orderBy(cb.asc(from.get("descricao")));
  
         List<CentroCustos> result = entityManager.createQuery(query).getResultList();
         

@@ -2,12 +2,9 @@ package br.com.eiasiscon.financeiro.lancamento;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.contato.Contato;
 import br.com.eiasiscon.empresa.Empresa;
@@ -15,27 +12,25 @@ import br.com.eiasiscon.financeiro.centrocustos.CentroCustos;
 import br.com.eiasiscon.financeiro.conta.Conta;
 import br.com.eiasiscon.financeiro.planocontas.PlanoContas;
 
-@Document
+@Entity
 public class Lancamento extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
-	@DBRef
+	@ManyToOne
     private Empresa empresa;
 	@NotNull
 	private Date competencia;
-	@DBRef
+	@ManyToOne
 	private Contato contato;
 	private String descricao;
 	private String documento;
 	private BigDecimal valor;
 	private TpLancamento tpLancamento;
 	private TpPagamento tpPagamento;
-	@DBRef
+	@ManyToOne
 	private Conta conta;	
-	@DBRef
+	@ManyToOne
 	private PlanoContas planoContas;
-	@DBRef
+	@ManyToOne
 	private CentroCustos centroCustos;
 	private String obs;
 	

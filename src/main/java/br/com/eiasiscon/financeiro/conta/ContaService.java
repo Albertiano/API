@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.eiasiscon.base.BaseService;
 
 @Service
-public class ContaService extends BaseService<Conta, String> {
+public class ContaService extends BaseService<Conta, Long> {
 	
 	@Autowired
 	private ContaRepository repository;
@@ -18,7 +18,7 @@ public class ContaService extends BaseService<Conta, String> {
 		setJpa(jpa);
 	}
 	
-	public Page<Conta> find(String query, String empresa, Pageable pageable) {
+	public Page<Conta> find(String query, Long empresa, Pageable pageable) {
 		Page<Conta>  entities = repository.find(query, empresa, pageable);
 		return entities;
 	}

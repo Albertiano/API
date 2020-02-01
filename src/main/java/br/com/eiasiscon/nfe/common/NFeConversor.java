@@ -121,7 +121,7 @@ public class NFeConversor {
 
     private static Ide dadosDeIdentificacao(NotaFiscal nf) {
         Ide ide = new Ide();
-        ide.setCUF(nf.getEmitente().getMunicipio().getUF().getCUF());
+        ide.setCUF(nf.getEmitente().getMunicipio().getUf().getCUF());
 
         String dEmis = ConversorDate.retornaDataHora(nf.getDhEmi()).replaceAll("[^0-9]", "");
         
@@ -182,7 +182,7 @@ public class NFeConversor {
         }        
         enderEmit.setCMun(String.valueOf(em.getMunicipio().getcMun()));
         enderEmit.setXMun(em.getMunicipio().getxMun());
-        enderEmit.setUF(TUfEmi.valueOf(em.getMunicipio().getUF().toString()));
+        enderEmit.setUF(TUfEmi.valueOf(em.getMunicipio().getUf().toString()));
         if (em.getCep() != null) {
             enderEmit.setCEP(em.getCep().replaceAll("[^0-9]", ""));
         }
@@ -237,7 +237,7 @@ public class NFeConversor {
         }
         enderDest.setCMun(String.valueOf(c.getMunicipio().getcMun()));
         enderDest.setXMun(c.getMunicipio().getxMun());
-        enderDest.setUF(TUf.valueOf(c.getMunicipio().getUF().toString()));
+        enderDest.setUF(TUf.valueOf(c.getMunicipio().getUf().toString()));
         
         enderDest.setCEP(c.getCep().replaceAll("[^0-9]", ""));
         enderDest.setCPais(String.valueOf(c.getPais().getcPais()));
@@ -1890,8 +1890,8 @@ public class NFeConversor {
             
             transporta.setXMun(t.getTransporta().getMunicipio().getxMun());
             
-            if (t.getTransporta().getMunicipio().getUF() != null ) {
-            	transporta.setUF(TUf.valueOf(t.getTransporta().getMunicipio().getUF().toString()));
+            if (t.getTransporta().getMunicipio().getUf() != null ) {
+            	transporta.setUF(TUf.valueOf(t.getTransporta().getMunicipio().getUf().toString()));
             }
             
             if(transporta.getXNome() != null) {

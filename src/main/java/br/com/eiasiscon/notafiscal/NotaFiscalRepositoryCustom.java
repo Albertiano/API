@@ -8,11 +8,11 @@ import org.springframework.data.domain.Pageable;
 
 public interface NotaFiscalRepositoryCustom {	
 	
-	Page<NotaFiscal> find(String q, String empresa, Pageable page);
+	Page<NotaFiscal> find(String q, Long empresa, Pageable page);
 	
-	Integer maxSerie(String empresa);
+	Integer maxSerie(Long empresa);
 	
-	Integer maxNumero(String empresa);
+	Integer maxNumero(Long empresa);
 
-	List<NotaFiscal> findByEmissao(Date ini, Date fim, String empresa);
+	List<NotaFiscal> findByEmissao(Date ini, Date fim, Long empresa);
 }

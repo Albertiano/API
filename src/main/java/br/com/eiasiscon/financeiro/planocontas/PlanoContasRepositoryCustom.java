@@ -5,5 +5,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface PlanoContasRepositoryCustom {	
 	
-	Page<PlanoContas> find(String q, String empresa, Pageable page);
+	Page<PlanoContas> find(String q, Long empresa, Pageable page);
 }

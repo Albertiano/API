@@ -3,15 +3,15 @@ package br.com.eiasiscon.financeiro.lancamento;
 import java.util.Date;
 
 public class LancamentoFiltro {
-	private String idEmpresa;
+	private Long idEmpresa;
 	private Date ini;
 	private Date fim;
 	private String q;
 	
-	public String getIdEmpresa() {
+	public Long getIdEmpresa() {
 		return idEmpresa;
 	}
-	public void setIdEmpresa(String idEmpresa) {
+	public void setIdEmpresa(Long idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
 	public Date getIni() {

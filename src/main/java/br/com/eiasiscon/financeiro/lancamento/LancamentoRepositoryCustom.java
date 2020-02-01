@@ -6,6 +6,6 @@ import org.springframework.data.domain.Pageable;
 public interface LancamentoRepositoryCustom {	
 	
 	Page<Lancamento> find(LancamentoFiltro filtro, Pageable page);
-	Lancamento ultimo(String empresa);
+	Lancamento ultimo(Long empresa);
 	int totalPages(LancamentoFiltro filtro, Pageable pageable);
 }

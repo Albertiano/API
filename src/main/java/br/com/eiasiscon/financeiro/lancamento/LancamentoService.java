@@ -2,18 +2,16 @@ package br.com.eiasiscon.financeiro.lancamento;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import br.com.eiasiscon.base.BaseService;
 import br.com.eiasiscon.financeiro.conta.Conta;
 import br.com.eiasiscon.financeiro.conta.ContaRepository;
 
 @Service
-public class LancamentoService extends BaseService<Lancamento, String> {
+public class LancamentoService extends BaseService<Lancamento, Long> {
 	
 	@Autowired
 	private LancamentoRepository repository;
@@ -53,7 +51,7 @@ public class LancamentoService extends BaseService<Lancamento, String> {
 		return lancamento;
 	}
 	
-	public Lancamento novo(String empresa) {
+	public Lancamento novo(Long empresa) {
 		Lancamento last = repository.ultimo(empresa);
 		if (last == null) {
 			last = new Lancamento();

@@ -2,9 +2,11 @@ package br.com.eiasiscon.notafiscal;
 
 import java.util.Date;
 import java.util.List;
-
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.contato.Contato;
@@ -24,14 +26,12 @@ import br.com.eiasiscon.notafiscal.total.Total;
 import br.com.eiasiscon.notafiscal.transporte.Transporte;
 import br.com.eiasiscon.pdv.config.ConfigPdv;
 
-@Document
+@Entity
 public class NotaFiscal  extends BaseEntity {
 
-	private static final long serialVersionUID = 225676107701479209L;
-	
-	@DBRef
+	@ManyToOne
     private Empresa empresa;
-	@DBRef
+	@ManyToOne
     private ConfigPdv pdv;
 	private String sitNfe;
 	private String versao;
@@ -58,21 +58,28 @@ public class NotaFiscal  extends BaseEntity {
 	private String verProc = "4.00";
 	private Date dhCont;	
 	private String xJust;
-	@DBRef
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<NFref> NFRef;
-	private Empresa emitente;
+	@ManyToOne
 	private Contato dest;
 	// private Local retirada;
 	// private Local entrega;
 	// private List<AutXML> autXML;
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<ItemNotaFiscal> itens;
+	@OneToOne(cascade = CascadeType.ALL)
 	private Total total;
+	@OneToOne(cascade = CascadeType.ALL)
 	private Transporte transp;
+	@OneToOne(cascade = CascadeType.ALL)
 	private Cobranca cobr;
+	@OneToOne(cascade = CascadeType.ALL)
 	private Pagamento pag;
+	@OneToOne(cascade = CascadeType.ALL)
 	private InfAdicionais infAdic;
 	
 	private String xml;
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<String> procEventoNFe;
 	
 	public Empresa getEmpresa() {
@@ -238,10 +245,7 @@ public class NotaFiscal  extends BaseEntity {
 		NFRef = nFRef;
 	}
 	public Empresa getEmitente() {
-		return emitente;
-	}
-	public void setEmitente(Empresa emitente) {
-		this.emitente = emitente;
+		return empresa;
 	}
 	public Contato getDest() {
 		return dest;

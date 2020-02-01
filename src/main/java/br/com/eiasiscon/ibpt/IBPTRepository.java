@@ -1,8 +1,8 @@
 package br.com.eiasiscon.ibpt;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-
-public interface IBPTRepository extends MongoRepository<IBPT, String> {	
-
+@Repository
+public interface IBPTRepository extends JpaRepository<IBPT, Long> {
 }

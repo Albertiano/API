@@ -1,17 +1,15 @@
 package br.com.eiasiscon.financeiro.planocontas;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.empresa.Empresa;
 
-@Document
+@Entity
 public class PlanoContas extends BaseEntity {
 
-	private static final long serialVersionUID = 1L;
-	
-	@DBRef
+	@ManyToOne
     private Empresa empresa;
 	private String descricao;
 	private String codigo;

@@ -2,10 +2,8 @@ package br.com.eiasiscon.financeiro.lancamento;
 
 import java.util.Arrays;
 import java.util.List;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,10 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.eiasiscon.base.BaseEndpoint;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/lancamento")
-public class LancamentoEndpoint {
+public class LancamentoEndpoint extends BaseEndpoint<Lancamento, Long> {
 	
 	@Autowired
 	private LancamentoService service;
@@ -40,12 +40,6 @@ public class LancamentoEndpoint {
 	@PostMapping("/pages")
 	public int totalPages(@RequestBody LancamentoFiltro filtro, Pageable pageable) {
 		return service.totalPages(filtro, pageable);
-	}
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Lancamento> recuperar(@PathVariable String id) {
-		Lancamento entity = service.retrieve(id);
-		return entity != null ? ResponseEntity.ok(entity) : ResponseEntity.notFound().build();
 	}
 	
 	@PostMapping
@@ -72,7 +66,7 @@ public class LancamentoEndpoint {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable String id) {
+	public void remover(@PathVariable Long id) {
 		Lancamento entity = service.retrieve(id);
 		if(entity.getTpLancamento() == TpLancamento.CREDITO) {
 			entity.setTpLancamento(TpLancamento.DEBITO);
@@ -84,7 +78,7 @@ public class LancamentoEndpoint {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Lancamento> atualizar(@PathVariable String id, @Valid @RequestBody Lancamento entity) {
+	public ResponseEntity<Lancamento> atualizar(@PathVariable Long id, @Valid @RequestBody Lancamento entity) {
 		Lancamento entitySaved = service.retrieve(entity.getId());
 		if(entity.getTpLancamento() == TpLancamento.CREDITO) {
 			entitySaved.setTpLancamento(TpLancamento.DEBITO);
@@ -100,7 +94,7 @@ public class LancamentoEndpoint {
 	}
 	
 	@GetMapping("/novo")
-	public ResponseEntity<Lancamento> novo(@RequestParam String empresa) {
+	public ResponseEntity<Lancamento> novo(@RequestParam Long empresa) {
 		Lancamento entity = service.novo(empresa);
 		return entity != null ? ResponseEntity.ok(entity) : ResponseEntity.notFound().build();
 	}

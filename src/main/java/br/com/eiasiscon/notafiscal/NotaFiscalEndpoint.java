@@ -45,13 +45,13 @@ public class NotaFiscalEndpoint {
 	private NotaFiscalService service;
 		
 	@GetMapping
-	public Page<NotaFiscal> procurar(@RequestParam String filter, @RequestParam String empresa, Pageable pageable) {
+	public Page<NotaFiscal> procurar(@RequestParam String filter, @RequestParam Long empresa, Pageable pageable) {
 		Page<NotaFiscal> contatos =  service.find(filter, empresa, pageable);
 		return contatos;
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<NotaFiscal> recuperar(@PathVariable String id) {
+	public ResponseEntity<NotaFiscal> recuperar(@PathVariable Long id) {
 		NotaFiscal entity = service.retrieve(id);
 		return entity != null ? ResponseEntity.ok(entity) : ResponseEntity.notFound().build();
 	}
@@ -81,18 +81,18 @@ public class NotaFiscalEndpoint {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable String id) {
+	public void remover(@PathVariable Long id) {
 		service.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<NotaFiscal> atualizar(@PathVariable String id, @Valid @RequestBody NotaFiscal entity) {
+	public ResponseEntity<NotaFiscal> atualizar(@PathVariable Long id, @Valid @RequestBody NotaFiscal entity) {
 		NotaFiscal entitySaved = service.update(id, entity);
 		return ResponseEntity.ok(entitySaved);
 	}
 	
 	@GetMapping("/duplicar/{id}")
-	public ResponseEntity<NotaFiscal> duplicar(@PathVariable String id) {
+	public ResponseEntity<NotaFiscal> duplicar(@PathVariable Long id) {
 		NotaFiscal entitySaved = service.duplicar(id);
 		return entitySaved != null ? ResponseEntity.status(HttpStatus.CREATED).body(entitySaved) : ResponseEntity.notFound().build();
 	}
@@ -146,7 +146,7 @@ public class NotaFiscalEndpoint {
 	}
 	
 	@GetMapping("/item")
-	public ItemNotaFiscal getItem(@RequestParam String idProd, @RequestParam BigDecimal quant, @RequestParam BigDecimal vUn, UF uf) {
+	public ItemNotaFiscal getItem(@RequestParam Long idProd, @RequestParam BigDecimal quant, @RequestParam BigDecimal vUn, UF uf) {
 		ItemNotaFiscal item = service.getItem(idProd, quant, vUn, uf);
 		return item;
 	}
@@ -160,7 +160,7 @@ public class NotaFiscalEndpoint {
 	}
 	
 	@PostMapping(value = "/exportar", produces = "application/zip")
-	public ResponseEntity<byte[]> exportar(@RequestBody String[] idNota) {
+	public ResponseEntity<byte[]> exportar(@RequestBody Long[] idNota) {
 		
 		byte[] retorn = service.exportar(idNota);
 		
@@ -168,7 +168,7 @@ public class NotaFiscalEndpoint {
 	}
 	
 	@GetMapping(value = "/exportar", produces = "application/zip")
-	public ResponseEntity<byte[]> exportar(@RequestParam String idNota) {
+	public ResponseEntity<byte[]> exportar(@RequestParam Long idNota) {
 		
 		byte[] retorn = service.exportar(idNota);
 		

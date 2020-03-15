@@ -1,6 +1,11 @@
 package br.com.eiasiscon.notafiscal.ide.ref;
 
-public class NFref {
+import javax.persistence.Entity;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class NFref extends BaseEntity {
 	
 	private String refNFe;
 

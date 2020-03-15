@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -27,7 +29,7 @@ import br.com.eiasiscon.notafiscal.transporte.Transporte;
 import br.com.eiasiscon.pdv.config.ConfigPdv;
 
 @Entity
-public class NotaFiscal  extends BaseEntity {
+public class NotaFiscal extends BaseEntity {
 
 	@ManyToOne
     private Empresa empresa;
@@ -36,6 +38,7 @@ public class NotaFiscal  extends BaseEntity {
 	private String sitNfe;
 	private String versao;
 	private String chave;
+	@Enumerated(EnumType.STRING)
 	private UF uf;
 	private String cNF;
 	private String natOp;
@@ -44,15 +47,21 @@ public class NotaFiscal  extends BaseEntity {
 	private Integer numero;
 	private Date dhEmi;
 	private Date dhSaiEnt;
+	@Enumerated(EnumType.STRING)
 	private TpNF tpNF;
+	@Enumerated(EnumType.STRING)
 	private IdDest  idDest;
 	private String munFG;
+	@Enumerated(EnumType.STRING)
 	private TpImp tpImp;
 	private String tpEmis;
 	private int cDV;
 	private String tpAmb;
+	@Enumerated(EnumType.STRING)
 	private FinNFe finNFe;
+	@Enumerated(EnumType.STRING)
 	private IndFinal indFinal;
+	@Enumerated(EnumType.STRING)
 	private IndPres indPres;
 	private String procEmi = "0";
 	private String verProc = "4.00";
@@ -80,7 +89,7 @@ public class NotaFiscal  extends BaseEntity {
 	
 	private String xml;
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<String> procEventoNFe;
+	private List<ProcEventoNFe> procEventoNFe;
 	
 	public Empresa getEmpresa() {
 		return empresa;
@@ -289,10 +298,10 @@ public class NotaFiscal  extends BaseEntity {
 	public void setInfAdic(InfAdicionais infAdic) {
 		this.infAdic = infAdic;
 	}
-	public List<String> getProcEventoNFe() {
+	public List<ProcEventoNFe> getProcEventoNFe() {
 		return procEventoNFe;
 	}
-	public void setProcEventoNFe(List<String> procEventoNFe) {
+	public void setProcEventoNFe(List<ProcEventoNFe> procEventoNFe) {
 		this.procEventoNFe = procEventoNFe;
 	}
 	public String getXml() {

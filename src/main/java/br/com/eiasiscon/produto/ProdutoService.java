@@ -9,7 +9,7 @@ import br.com.eiasiscon.base.BaseService;
 import br.com.eiasiscon.produto.Produto;
 import br.com.eiasiscon.produto.ProdutoRepository;
 @Service
-public class ProdutoService extends BaseService<Produto, String> {
+public class ProdutoService extends BaseService<Produto, Long> {
 	
 	@Autowired
 	ProdutoRepository repository;
@@ -19,7 +19,7 @@ public class ProdutoService extends BaseService<Produto, String> {
 		setJpa(jpa);
 	}
 	
-	public Page<Produto> find(String query, String empresa, Pageable pageable) {
+	public Page<Produto> find(String query, Long empresa, Pageable pageable) {
 		Page<Produto>  entities = repository.find(query, empresa, pageable);
 		return entities;
 	}

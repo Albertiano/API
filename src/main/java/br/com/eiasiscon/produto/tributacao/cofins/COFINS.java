@@ -6,10 +6,18 @@ package br.com.eiasiscon.produto.tributacao.cofins;
 
 import java.math.BigDecimal;
 
-public class COFINS{
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class COFINS extends BaseEntity {
     /**
      * Código de Situação Tributária do COFINS
      */
+	@Enumerated(EnumType.STRING)
     private CST_COFINS cstCOFINS;
     /**
      * Valor da Base de Cálculo do COFINS
@@ -32,6 +40,7 @@ public class COFINS{
      */
     private BigDecimal vAliqProdCOFINS;
     
+    @Enumerated(EnumType.STRING)
     private TpCalcCOFINS tpCalcCofins;
 
     public COFINS() {

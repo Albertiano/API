@@ -2,6 +2,8 @@ package br.com.eiasiscon.municipio;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.municipio.UF;
@@ -13,6 +15,7 @@ public class Municipio extends BaseEntity implements Serializable{
 		
     private int cMun;
     private String xMun;
+    @Enumerated(EnumType.STRING)
     private UF uf;
     
     public int getcMun() {

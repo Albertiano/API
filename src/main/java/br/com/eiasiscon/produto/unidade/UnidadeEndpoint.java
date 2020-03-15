@@ -32,7 +32,7 @@ public class UnidadeEndpoint {
 	private UnidadeService service;
 		
 	@GetMapping
-	public Page<Unidade> procurar(@RequestParam String filter, @RequestParam String empresa, Pageable pageable) {
+	public Page<Unidade> procurar(@RequestParam String filter, @RequestParam Long empresa, Pageable pageable) {
 		Page<Unidade> contatos =  service.find(filter, empresa, pageable);
 		return contatos;
 	}

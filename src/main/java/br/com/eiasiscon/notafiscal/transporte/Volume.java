@@ -3,7 +3,14 @@ package br.com.eiasiscon.notafiscal.transporte;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Volume {
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class Volume extends BaseEntity {
 	
 	private BigDecimal qVol;
 	private String esp;
@@ -11,6 +18,7 @@ public class Volume {
 	private String nVol;
 	private BigDecimal pesoL;
     private BigDecimal pesoB;
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Lacre> lacres;
     
 	public BigDecimal getqVol() {

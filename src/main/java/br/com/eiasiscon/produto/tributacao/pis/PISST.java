@@ -2,10 +2,18 @@ package br.com.eiasiscon.produto.tributacao.pis;
 
 import java.math.BigDecimal;
 
-public class PISST {
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class PISST extends BaseEntity {
     /**
      * Código de Situação Tributária do PIS
      */
+	@Enumerated(EnumType.STRING)
     private TpCalcPIS tpCalcPISST;
     /**
      * Valor da Base de Cálculo do PIS

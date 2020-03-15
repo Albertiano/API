@@ -31,7 +31,7 @@ public class UserService extends BaseService<User, Long> {
     }
     
     public Page<User> find(String query, Pageable pageable) {
-		Page<User>  entities = repository.find(query, pageable);
+		Page<User>  entities = repository.findAll(pageable);
 		return entities;
 	}
 }

@@ -1,8 +1,15 @@
 package br.com.eiasiscon.notafiscal.pagamento;
 
-public class Card {
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+import br.com.eiasiscon.base.BaseEntity;
+@Entity
+public class Card extends BaseEntity {
 	
 	private String cnpj;
+	@Enumerated(EnumType.STRING)
 	private TpBand tBand;
 	private String cAut;
 	

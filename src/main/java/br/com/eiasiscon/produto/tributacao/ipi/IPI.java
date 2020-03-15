@@ -2,7 +2,14 @@ package br.com.eiasiscon.produto.tributacao.ipi;
 
 import java.math.BigDecimal;
 
-public class IPI{
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class IPI extends BaseEntity {
     /*
      * CNPJ do produtor da mercadoria, quando  diferente  do  emitente. 
      * Somente  para  os  casos  de exportação direta ou indireta. 
@@ -24,6 +31,7 @@ public class IPI{
     /*
      * Código  da  situação  tributária  do IPI
      */
+    @Enumerated(EnumType.STRING)
     private CST_IPI cstIPI;
     /*
      * Valor da BC do IPI
@@ -48,6 +56,7 @@ public class IPI{
     /*
      * Tipo de Calculo Valor ou Percentual
      */
+    @Enumerated(EnumType.STRING)
     private TpCalcIPI tpCalcIPI;
     
     private boolean vIpiBcICMS;

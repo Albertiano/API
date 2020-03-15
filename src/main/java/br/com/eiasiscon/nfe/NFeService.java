@@ -21,6 +21,7 @@ import br.com.eiasiscon.nfe.common.NFeConversor;
 import br.com.eiasiscon.nfe.common.NFeDTO;
 import br.com.eiasiscon.notafiscal.NotaFiscal;
 import br.com.eiasiscon.notafiscal.NotaFiscalRepository;
+import br.com.eiasiscon.notafiscal.ProcEventoNFe;
 import br.com.eiasiscon.uploadfiles.StorageService;
 import br.com.swconsultoria.certificado.Certificado;
 import br.com.swconsultoria.certificado.CertificadoService;
@@ -295,9 +296,12 @@ public class NFeService {
             RetornoUtil.validaCancelamento(retorno);
 
             String xmlProcEventoNFe = CancelamentoUtil.criaProcEventoCancelamento(config, enviEvento, retorno.getRetEvento().get(0));
-                        
-            if(nf.getProcEventoNFe() == null) { nf.setProcEventoNFe(new ArrayList<String>()); }
-            nf.getProcEventoNFe().add(xmlProcEventoNFe);
+             
+            ProcEventoNFe procEventoNFe = new ProcEventoNFe();
+            procEventoNFe.setXmlEvento(xmlProcEventoNFe);
+            
+            if(nf.getProcEventoNFe() == null) { nf.setProcEventoNFe(new ArrayList<ProcEventoNFe>()); }
+            nf.getProcEventoNFe().add(procEventoNFe);
             nf.setSitNfe("Cancelada");
             repository.save(nf);
 

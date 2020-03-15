@@ -7,5 +7,5 @@ import br.com.eiasiscon.produto.tributacao.Tributacao;
 
 public interface TributacaoRepositoryCustom {
 
-	Page<Tributacao> find(String q, String empresa, Pageable page);
+	Page<Tributacao> find(String q, Long empresa, Pageable page);
 }

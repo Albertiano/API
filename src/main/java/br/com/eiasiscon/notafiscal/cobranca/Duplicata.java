@@ -3,7 +3,12 @@ package br.com.eiasiscon.notafiscal.cobranca;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Duplicata {
+import javax.persistence.Entity;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class Duplicata extends BaseEntity {
 	
 	private String numero;
 	private Date vencimento;

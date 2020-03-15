@@ -27,7 +27,7 @@ import br.com.eiasiscon.produto.tributacao.pis.CST_PIS;
 import br.com.eiasiscon.produto.tributacao.pis.PIS;
 
 @Service
-public class TributacaoService extends BaseService<Tributacao, String> {
+public class TributacaoService extends BaseService<Tributacao, Long> {
 	
 	@Autowired
 	private TributacaoRepository repository;
@@ -37,7 +37,7 @@ public class TributacaoService extends BaseService<Tributacao, String> {
 		setJpa(jpa);
 	}
 	
-	public Page<Tributacao> find(String query, String empresa, Pageable pageable) {
+	public Page<Tributacao> find(String query, Long empresa, Pageable pageable) {
 		Page<Tributacao>  entities = repository.find(query, empresa, pageable);
 		return entities;
 	}

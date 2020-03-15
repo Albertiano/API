@@ -1,13 +1,18 @@
 package br.com.eiasiscon.produto;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.repository.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
@@ -18,36 +23,42 @@ import br.com.eiasiscon.produto.Produto;
 @Repository
 public class ProdutoRepositoryImpl implements ProdutoRepositoryCustom{
 	
-	private final MongoOperations operations;
-
+	@PersistenceContext
+	EntityManager entityManager;
+	
 	@Autowired
-	public ProdutoRepositoryImpl(MongoOperations operations) {
-
-		Assert.notNull(operations, "[Assertion failed] - this argument is required; it must not be null");
-		this.operations = operations;
+	public ProdutoRepositoryImpl(EntityManager entityManager) {
+		Assert.notNull(entityManager, "[Assertion failed] - this argument is required; it must not be null");
+		this.entityManager = entityManager;
 	}
 
 	@Override
-	public Page<Produto> find(String q, String empresa, Pageable pageable) {
-		Query query = new Query();
+	public Page<Produto> find(String q, Long empresa, Pageable pageable) {
+ 
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Produto> query = cb.createQuery(Produto.class);
+        Root<Produto> from = query.from(Produto.class);
+  
+		List<Predicate> predicates = new ArrayList<>();
 				
-		query.addCriteria(
-				Criteria.where("empresa.id").is(empresa)
-				.orOperator(
-						Criteria.where("codigo").regex(q,"i"), 
-						Criteria.where("referencia").regex(q,"i"),
-						Criteria.where("descricao").regex(q,"i"),
-						Criteria.where("ncm").regex(q,"i"),
-						Criteria.where("localizacao").regex(q,"i")
-				)
-		);
+		if ((q != null) && (!(q.isEmpty())) && (!q.equalsIgnoreCase("all"))) {
+			predicates.add(
+				cb.like(
+					cb.upper(from.<String> get("descricao")),
+					"%" + q.toUpperCase() + "%"));
+		}
+
+		predicates.add(cb.and(cb.equal(from.get("empresa"), empresa)));
 		
-		query.with(pageable);
-		
-		List<Produto> list = operations.find(query, Produto.class);
-		
-	    return PageableExecutionUtils.getPage(list, pageable,
-	            () -> operations.count(query, Produto.class));
+		query.select(from)
+			.where(cb.or(predicates.toArray(new Predicate[predicates.size()])));
+
+		query.orderBy(cb.asc(from.get("descricao")));
+ 
+        List<Produto> result = entityManager.createQuery(query).getResultList();
+        
+	    return PageableExecutionUtils.getPage(result, pageable,
+	            () -> result.size());
 	}
 
 }

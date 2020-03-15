@@ -1,6 +1,11 @@
 package br.com.eiasiscon.notafiscal.transporte;
 
-public class Lacre {
+import javax.persistence.Entity;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class Lacre extends BaseEntity {
 	
 	private String nLacre;
 

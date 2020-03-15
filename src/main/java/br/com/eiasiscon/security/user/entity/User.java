@@ -1,28 +1,27 @@
 package br.com.eiasiscon.security.user.entity;
 
 import java.util.Collection;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Length;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import br.com.eiasiscon.base.BaseEntity;
 
-@Document
+@Entity
 public class User extends BaseEntity {
-	
-	private static final long serialVersionUID = -6703244807591424234L;
 	
 	@Email(message = "*Please provide a valid Email")
 	@NotEmpty(message = "*Please provide an email")
 	private String email;
-	@Length(min = 4, message = "*Your password must have at least 4 characters")
 	@NotEmpty(message = "*Please provide your password")
 	private String password;
 	@NotEmpty(message = "*Please provide your name")
 	private String name;
 	@NotEmpty(message = "*Please provide your last name")
 	private String lastName;
+	@OneToMany
 	private Collection<Role> roles;
 
 	public String getPassword() {

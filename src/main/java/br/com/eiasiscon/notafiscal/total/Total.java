@@ -2,7 +2,12 @@ package br.com.eiasiscon.notafiscal.total;
 
 import java.math.BigDecimal;
 
-public class Total {
+import javax.persistence.Entity;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class Total extends BaseEntity {
 	
 	/*
 	 * Base de Cálculo do ICMS

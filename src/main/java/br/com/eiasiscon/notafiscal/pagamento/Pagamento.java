@@ -2,8 +2,16 @@ package br.com.eiasiscon.notafiscal.pagamento;
 
 import java.util.List;
 
-public class Pagamento {
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class Pagamento extends BaseEntity {
 	
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<DetPag> detPag;
 
 	public List<DetPag> getDetPag() {

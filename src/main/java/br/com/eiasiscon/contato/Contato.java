@@ -1,6 +1,8 @@
 package br.com.eiasiscon.contato;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import br.com.eiasiscon.base.BaseEntity;
@@ -14,6 +16,7 @@ import br.com.eiasiscon.pais.Pais;
 public class Contato extends BaseEntity {
 	
 	private String codigo;
+	@Enumerated(EnumType.STRING)
     private TpDoc tpDoc;
     private String numDoc;
     private String IE;
@@ -42,6 +45,7 @@ public class Contato extends BaseEntity {
     private String celular;
     private String fantasia;
     private String ISUF;
+    @Enumerated(EnumType.STRING)
     private IndIEDest indIEDest;
     
     private String lat;

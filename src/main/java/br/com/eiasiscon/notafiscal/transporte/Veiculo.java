@@ -1,8 +1,12 @@
 package br.com.eiasiscon.notafiscal.transporte;
 
+import javax.persistence.Entity;
+
+import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.municipio.UF;
 
-public class Veiculo {
+@Entity
+public class Veiculo extends BaseEntity {
 
 	private String placa;
 	private UF uf;

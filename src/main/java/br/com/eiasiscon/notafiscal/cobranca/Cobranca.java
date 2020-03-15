@@ -2,9 +2,17 @@ package br.com.eiasiscon.notafiscal.cobranca;
 
 import java.util.List;
 
-public class Cobranca {
-	
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class Cobranca extends BaseEntity {
+	@OneToOne
 	private Fatura fat;
+	@OneToMany
 	private List<Duplicata> dup;
 	
 	public Fatura getFat() {

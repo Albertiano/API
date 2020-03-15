@@ -3,6 +3,8 @@ package br.com.eiasiscon.financeiro.lancamento;
 import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import br.com.eiasiscon.base.BaseEntity;
@@ -24,7 +26,9 @@ public class Lancamento extends BaseEntity {
 	private String descricao;
 	private String documento;
 	private BigDecimal valor;
+	@Enumerated(EnumType.STRING)
 	private TpLancamento tpLancamento;
+	@Enumerated(EnumType.STRING)
 	private TpPagamento tpPagamento;
 	@ManyToOne
 	private Conta conta;	

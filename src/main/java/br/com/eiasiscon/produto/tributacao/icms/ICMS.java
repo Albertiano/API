@@ -4,28 +4,34 @@
  */
 package br.com.eiasiscon.produto.tributacao.icms;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.municipio.UF;
 
-public class ICMS implements Serializable{
-
-    private static final long serialVersionUID = 1L;
+@Entity
+public class ICMS extends BaseEntity {
     /**
      * Origem da mercadoria
      *
      */
+    @Enumerated(EnumType.STRING)
     private Origem origem;
     /**
      * Tributação do ICMS
      *
      */
+    @Enumerated(EnumType.STRING)
     private CST_ICMS cstICMS;
     /**
      * Modalidade de determinação da BC do ICMS
      *
      */
+    @Enumerated(EnumType.STRING)
     private ModBC modBCICMS;
     /**
      * Valor da BC do ICMS
@@ -51,11 +57,13 @@ public class ICMS implements Serializable{
      * Motivo da desoneração do ICMS
      *
      */
+    @Enumerated(EnumType.STRING)
     private MotDesICMS motDesICMS;
     /**
      * Modalidade de determinação da BC do ICMS ST
      *
      */
+    @Enumerated(EnumType.STRING)
     private ModBCST modBCST;
     /**
      * Percentual da margem de valor Adicionado do ICMS ST
@@ -111,6 +119,7 @@ public class ICMS implements Serializable{
      * UF para qual é devido o ICMS ST
      *
      */
+    @Enumerated(EnumType.STRING)
     private UF UFST;
     /**
      * Alíquota aplicável de cálculo do crédito (Simples Nacional). 

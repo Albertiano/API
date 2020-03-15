@@ -2,18 +2,18 @@ package br.com.eiasiscon.pdv.config;
 
 import java.io.Serializable;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.empresa.Empresa;
 
-@Document
+@Entity
 public class ConfigPdv extends BaseEntity implements Serializable {
 	
 	private static final long serialVersionUID = -4591790684476266712L;
 	
-	@DBRef
+	@ManyToOne
     private Empresa empresa;
 	
 	private String descricao;

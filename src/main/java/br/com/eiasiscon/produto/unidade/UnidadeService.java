@@ -20,7 +20,7 @@ public class UnidadeService extends BaseService<Unidade, String> {
 		setJpa(jpa);
 	}
 	
-	public Page<Unidade> find(String query, String empresa, Pageable pageable) {
+	public Page<Unidade> find(String query, Long empresa, Pageable pageable) {
 		Page<Unidade>  entities = repository.find(query, empresa, pageable);
 		return entities;
 	}

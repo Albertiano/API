@@ -2,22 +2,23 @@ package br.com.eiasiscon.produto.tributacao;
 
 import java.util.List;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.empresa.Empresa;
 import br.com.eiasiscon.produto.tributacao.Destino;
 
-@Document
+@Entity
 public class Tributacao  extends BaseEntity {
 
-	private static final long serialVersionUID = -4291567276980231944L;
-
-	@DBRef
+	@ManyToOne
     private Empresa empresa;
 	String nome;
 	String descricao;
+	@OneToMany(cascade = CascadeType.ALL)
 	List<Destino> destinos;
 	
 	public Empresa getEmpresa() {

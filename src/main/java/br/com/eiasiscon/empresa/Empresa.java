@@ -3,6 +3,8 @@ package br.com.eiasiscon.empresa;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
@@ -17,6 +19,7 @@ import br.com.eiasiscon.security.user.entity.User;
 @Entity
 public class Empresa extends BaseEntity {
 	
+	@Enumerated(EnumType.STRING)
     private TpDoc tpDoc;
     private String numDoc;
     private String IE;
@@ -37,6 +40,7 @@ public class Empresa extends BaseEntity {
     private Pais pais;
     private String fantasia;
     private String IEST;
+    @Enumerated(EnumType.STRING)
     private CRT crt;
     @ManyToMany
     private Collection<User> users;

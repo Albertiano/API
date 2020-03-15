@@ -6,7 +6,7 @@ public class NotaFiscalDTO {
 	
 	private Date ini;
 	private Date fim;
-	private String empresa;
+	private Long empresa;
 	
 	public Date getIni() {
 		return ini;
@@ -20,10 +20,10 @@ public class NotaFiscalDTO {
 	public void setFim(Date fim) {
 		this.fim = fim;
 	}
-	public String getEmpresa() {
+	public Long getEmpresa() {
 		return empresa;
 	}
-	public void setEmpresa(String empresa) {
+	public void setEmpresa(Long empresa) {
 		this.empresa = empresa;
 	}
 

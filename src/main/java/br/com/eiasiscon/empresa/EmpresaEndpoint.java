@@ -28,7 +28,7 @@ public class EmpresaEndpoint extends BaseEndpoint<Empresa, Long> {
 	@Autowired
 	private UserService userService;
 		
-	@GetMapping
+	@GetMapping("/from-user")
 	public Page<Empresa> procurar(JwtAuthenticationToken token, @RequestParam String filter, Pageable pageable) {
 		UserContext principal = (UserContext) token.getPrincipal();
 		Optional<User> user = userService.getByUsername(principal.getUsername());

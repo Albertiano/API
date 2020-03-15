@@ -1,27 +1,24 @@
 package br.com.eiasiscon.produto;
 
 import java.math.BigDecimal;
-import java.util.List;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.empresa.Empresa;
-import br.com.eiasiscon.produto.FornecedorProduto;
 import br.com.eiasiscon.produto.tributacao.Tributacao;
 import br.com.eiasiscon.produto.unidade.Unidade;
 
-@Document
+@Entity
 public class Produto  extends BaseEntity {
-
-	private static final long serialVersionUID = -2413283511568165078L;
-	@DBRef
+	
+	@ManyToOne
     private Empresa empresa;
 	private String codigo;
     private String referencia;
     private String descricao;
-    @DBRef
+    @ManyToOne
     private Unidade unidade;
     private boolean desativado;
     private String ncm;
@@ -35,15 +32,13 @@ public class Produto  extends BaseEntity {
     private BigDecimal estoqueMin;
     private BigDecimal estoque;    
     private String localizacao;
-    @DBRef
-    private List<FornecedorProduto> fornecedores;
-    @DBRef
+    @ManyToOne
     private Tributacao tributacao;
     private String extipi;
     private String genero;
     private String cEan;
     private String cEanTrib;
-    @DBRef
+    @ManyToOne
     private Unidade utrib;
     private BigDecimal vuntrib;
     
@@ -136,12 +131,6 @@ public class Produto  extends BaseEntity {
 	}
 	public void setLocalizacao(String localizacao) {
 		this.localizacao = localizacao;
-	}
-	public List<FornecedorProduto> getFornecedores() {
-		return fornecedores;
-	}
-	public void setFornecedores(List<FornecedorProduto> fornecedores) {
-		this.fornecedores = fornecedores;
 	}
 	public Tributacao getTributacao() {
 		return tributacao;

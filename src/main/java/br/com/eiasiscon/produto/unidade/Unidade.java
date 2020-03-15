@@ -1,19 +1,15 @@
 package br.com.eiasiscon.produto.unidade;
 
-import java.io.Serializable;
-
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.empresa.Empresa;
 
-@Document
-public class Unidade extends BaseEntity implements Serializable{
+@Entity
+public class Unidade extends BaseEntity {
 	
-	private static final long serialVersionUID = 1L;
-	
-	@DBRef
+	@ManyToOne
     private Empresa empresa;
 	
 	private String sigla, desc;

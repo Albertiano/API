@@ -2,7 +2,12 @@ package br.com.eiasiscon.notafiscal.cobranca;
 
 import java.math.BigDecimal;
 
-public class Fatura {
+import javax.persistence.Entity;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class Fatura extends BaseEntity {
 
 	private String nFat;
 	private BigDecimal vOrig;

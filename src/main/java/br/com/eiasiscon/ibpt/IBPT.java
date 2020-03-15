@@ -9,7 +9,7 @@ import br.com.eiasiscon.base.BaseEntity;
 
 @Entity
 @Table(name = "IBPT")
-public class IBPT  extends BaseEntity {
+public class IBPT extends BaseEntity {
 
 	String codigo;
 	String tipo;

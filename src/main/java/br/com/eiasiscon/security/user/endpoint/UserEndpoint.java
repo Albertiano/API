@@ -42,7 +42,7 @@ public class UserEndpoint {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<User> retrieve(@PathVariable String id) {
+	public ResponseEntity<User> retrieve(@PathVariable Long id) {
 		User entity = service.retrieve(id);
 		return entity != null ? ResponseEntity.ok(entity) : ResponseEntity.notFound().build();
 	}
@@ -56,12 +56,12 @@ public class UserEndpoint {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remove(@PathVariable String id) {
+	public void remove(@PathVariable Long id) {
 		service.activate(id, false);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<User> update(@PathVariable String id, @Valid @RequestBody User entity) {
+	public ResponseEntity<User> update(@PathVariable Long id, @Valid @RequestBody User entity) {
 		entity.setPassword(passwordEncoder.encode(entity.getPassword()));
 		User entitySaved = service.update(id, entity);
 		return ResponseEntity.ok(entitySaved);

@@ -2,6 +2,10 @@ package br.com.eiasiscon.notafiscal.item;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.produto.tributacao.cofins.COFINS;
 import br.com.eiasiscon.produto.tributacao.cofins.COFINSST;
 import br.com.eiasiscon.produto.tributacao.icms.ICMS;
@@ -9,7 +13,8 @@ import br.com.eiasiscon.produto.tributacao.ipi.IPI;
 import br.com.eiasiscon.produto.tributacao.pis.PIS;
 import br.com.eiasiscon.produto.tributacao.pis.PISST;
 
-public class DetalheFiscal {
+@Entity
+public class DetalheFiscal extends BaseEntity {
 	
 	private String cfop;
     private String extipi;
@@ -19,11 +24,17 @@ public class DetalheFiscal {
     private String utrib;
     private BigDecimal qTrib;
     private BigDecimal vuntrib;
+    @OneToOne
     private ICMS icms;
+    @OneToOne
     private IPI ipi;
+    @OneToOne
     private PIS pis;
+    @OneToOne
     private PISST pisST;
+    @OneToOne
     private COFINS cofins;
+    @OneToOne
     private COFINSST cofinsST;
     private BigDecimal vTotTrib;
     

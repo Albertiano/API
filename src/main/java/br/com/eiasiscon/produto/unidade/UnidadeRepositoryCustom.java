@@ -5,5 +5,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface UnidadeRepositoryCustom {	
 	
-	Page<Unidade> find(String q, String empresa, Pageable page);
+	Page<Unidade> find(String q, Long empresa, Pageable page);
 }

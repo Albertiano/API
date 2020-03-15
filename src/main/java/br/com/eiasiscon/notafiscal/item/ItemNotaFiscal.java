@@ -2,12 +2,19 @@ package br.com.eiasiscon.notafiscal.item;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.produto.Produto;
 
-public class ItemNotaFiscal {
+@Entity
+public class ItemNotaFiscal extends BaseEntity {
 	
 	private int nItem;
+	@OneToOne
 	private Produto produto;
+	@OneToOne
 	private DetalheFiscal detFiscal;
 	private BigDecimal quantidade;
 	private BigDecimal precoVenda;

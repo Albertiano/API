@@ -1,6 +1,8 @@
 package br.com.eiasiscon.financeiro.planocontas;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
 import br.com.eiasiscon.base.BaseEntity;
@@ -13,6 +15,7 @@ public class PlanoContas extends BaseEntity {
     private Empresa empresa;
 	private String descricao;
 	private String codigo;
+	@Enumerated(EnumType.STRING)
 	private TpConta tpConta;
 	
 	public Empresa getEmpresa() {

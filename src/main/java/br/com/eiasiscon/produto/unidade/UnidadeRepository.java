@@ -1,11 +1,11 @@
 package br.com.eiasiscon.produto.unidade;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.eiasiscon.produto.unidade.Unidade;
 
 
 @Repository
-public interface UnidadeRepository extends MongoRepository<Unidade, String>, UnidadeRepositoryCustom {
+public interface UnidadeRepository extends JpaRepository<Unidade, String>, UnidadeRepositoryCustom {
 }

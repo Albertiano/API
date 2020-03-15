@@ -42,7 +42,7 @@ public class LancamentoEndpoint extends BaseEndpoint<Lancamento, Long> {
 		return service.totalPages(filtro, pageable);
 	}
 	
-	@PostMapping
+	@PostMapping("/post")
 	public ResponseEntity<Lancamento> criar(@Valid @RequestBody Lancamento entity, HttpServletResponse response) {
 		Lancamento entitySaved;
 		if(entity.getId() == null) {

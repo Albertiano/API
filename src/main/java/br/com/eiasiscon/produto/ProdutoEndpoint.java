@@ -34,13 +34,13 @@ public class ProdutoEndpoint {
 	private ProdutoService service;
 		
 	@GetMapping
-	public Page<Produto> procurar(@RequestParam String filter, @RequestParam String empresa, Pageable pageable) {
+	public Page<Produto> procurar(@RequestParam String filter, @RequestParam Long empresa, Pageable pageable) {
 		Page<Produto> contatos =  service.find(filter, empresa, pageable);
 		return contatos;
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Produto> recuperar(@PathVariable String id) {
+	public ResponseEntity<Produto> recuperar(@PathVariable Long id) {
 		Produto entity = service.retrieve(id);
 		return entity != null ? ResponseEntity.ok(entity) : ResponseEntity.notFound().build();
 	}
@@ -56,12 +56,12 @@ public class ProdutoEndpoint {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable String id) {
+	public void remover(@PathVariable Long id) {
 		service.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Produto> atualizar(@PathVariable String id, @Valid @RequestBody Produto entity) {
+	public ResponseEntity<Produto> atualizar(@PathVariable Long id, @Valid @RequestBody Produto entity) {
 		Produto entitySaved = service.update(id, entity);
 		return ResponseEntity.ok(entitySaved);
 	}

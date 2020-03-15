@@ -29,13 +29,13 @@ public class ConfigPdvEndpoint {
 	private ConfigPdvService service;
 		
 	@GetMapping
-	public Page<ConfigPdv> procurar(@RequestParam String filter, @RequestParam String empresa, Pageable pageable) {
+	public Page<ConfigPdv> procurar(@RequestParam String filter, @RequestParam Long empresa, Pageable pageable) {
 		Page<ConfigPdv> contatos =  service.find(filter, empresa, pageable);
 		return contatos;
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ConfigPdv> recuperar(@PathVariable String id) {
+	public ResponseEntity<ConfigPdv> recuperar(@PathVariable Long id) {
 		ConfigPdv entity = service.retrieve(id);
 		return entity != null ? ResponseEntity.ok(entity) : ResponseEntity.notFound().build();
 	}
@@ -48,12 +48,12 @@ public class ConfigPdvEndpoint {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable String id) {
+	public void remover(@PathVariable Long id) {
 		service.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<ConfigPdv> atualizar(@PathVariable String id, @Valid @RequestBody ConfigPdv entity) {
+	public ResponseEntity<ConfigPdv> atualizar(@PathVariable Long id, @Valid @RequestBody ConfigPdv entity) {
 		ConfigPdv entitySaved = service.update(id, entity);
 		return ResponseEntity.ok(entitySaved);
 	}

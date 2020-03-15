@@ -1,6 +1,11 @@
 package br.com.eiasiscon.notafiscal;
 
-public class InfAdicionais {
+import javax.persistence.Entity;
+
+import br.com.eiasiscon.base.BaseEntity;
+
+@Entity
+public class InfAdicionais extends BaseEntity {
 	
 	private String infAdFisco;
     private String infCpl;

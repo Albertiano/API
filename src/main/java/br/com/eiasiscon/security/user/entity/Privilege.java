@@ -1,13 +1,12 @@
 package br.com.eiasiscon.security.user.entity;
 
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.Entity;
 
 import br.com.eiasiscon.base.BaseEntity;
 
-@Document
+@Entity
 public class Privilege extends BaseEntity {
-
-	private static final long serialVersionUID = 7392606791763398931L;
 	
 	private String name;
 	

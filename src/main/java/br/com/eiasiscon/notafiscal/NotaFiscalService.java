@@ -94,7 +94,7 @@ public class NotaFiscalService extends BaseService<NotaFiscal, Long> {
 				File fileToZipCancel = new File(nf.getChave().concat("-procEvento.xml"));
 				zipOutputStream.putNextEntry(new ZipEntry(fileToZipCancel.getName()));
 				ByteArrayInputStream byteArrayInputStreamCancel = new ByteArrayInputStream(
-						nf.getProcEventoNFe().get(0).getBytes());
+						nf.getProcEventoNFe().get(0).getXmlEvento().getBytes());
 				IOUtils.copy(byteArrayInputStreamCancel, zipOutputStream);
 			}
 
@@ -153,7 +153,7 @@ public class NotaFiscalService extends BaseService<NotaFiscal, Long> {
         		File fileToZipCancel = new File(nf.getChave().concat("-procEvento.xml"));
                 zipOutputStream.putNextEntry(new ZipEntry(fileToZipCancel.getName()));
                 
-                ByteArrayInputStream byteArrayInputStreamCancel = new ByteArrayInputStream(nf.getProcEventoNFe().get(0).getBytes());
+                ByteArrayInputStream byteArrayInputStreamCancel = new ByteArrayInputStream(nf.getProcEventoNFe().get(0).getXmlEvento().getBytes());
 
                 IOUtils.copy(byteArrayInputStreamCancel, zipOutputStream);
         	}
@@ -214,7 +214,7 @@ public class NotaFiscalService extends BaseService<NotaFiscal, Long> {
         		File fileToZipCancel = new File(nf.getChave().concat("-procEvento.xml"));
                 zipOutputStream.putNextEntry(new ZipEntry(fileToZipCancel.getName()));
                 
-                ByteArrayInputStream byteArrayInputStreamCancel = new ByteArrayInputStream(nf.getProcEventoNFe().get(0).getBytes());
+                ByteArrayInputStream byteArrayInputStreamCancel = new ByteArrayInputStream(nf.getProcEventoNFe().get(0).getXmlEvento().getBytes());
 
                 IOUtils.copy(byteArrayInputStreamCancel, zipOutputStream);
         	}
@@ -244,24 +244,24 @@ public class NotaFiscalService extends BaseService<NotaFiscal, Long> {
 		return null;
 	}
 	
-	public int getSerieNFe(String idPdv) {
+	public int getSerieNFe(Long idPdv) {
 		ConfigPdv pdv = pdvNFe.retrieve(idPdv);
 		return pdv.getSerieNFe();
 	}
 	
-	public int getSerieNFCe(String idPdv) {
+	public int getSerieNFCe(Long idPdv) {
 		ConfigPdv pdv = pdvNFe.retrieve(idPdv);
 		return pdv.getSerieNFCe();
 	}
 	
-	public int getNextNumeroNFe(String idPdv) {
+	public int getNextNumeroNFe(Long idPdv) {
 		ConfigPdv pdv = pdvNFe.retrieve(idPdv);
 		pdv.setNumeroNFe(pdv.getNumeroNFe() + 1);
 		pdvNFe.update(idPdv, pdv);
 		return pdv.getNumeroNFe();
 	}
 	
-	public int getNextNumeroNFCe(String idPdv) {
+	public int getNextNumeroNFCe(Long idPdv) {
 		ConfigPdv pdv = pdvNFe.retrieve(idPdv);
 		pdv.setNumeroNFCe(pdv.getNumeroNFCe() + 1);
 		pdvNFe.update(idPdv, pdv);

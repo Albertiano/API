@@ -41,13 +41,13 @@ public class TributacaoEndpoint {
 	private TributacaoService service;
 		
 	@GetMapping
-	public Page<Tributacao> procurar(@RequestParam String filter, @RequestParam String empresa, Pageable pageable) {
+	public Page<Tributacao> procurar(@RequestParam String filter, @RequestParam Long empresa, Pageable pageable) {
 		Page<Tributacao> contatos =  service.find(filter, empresa, pageable);
 		return contatos;
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Tributacao> recuperar(@PathVariable String id) {
+	public ResponseEntity<Tributacao> recuperar(@PathVariable Long id) {
 		Tributacao entity = service.retrieve(id);
 		return entity != null ? ResponseEntity.ok(entity) : ResponseEntity.notFound().build();
 	}
@@ -66,12 +66,12 @@ public class TributacaoEndpoint {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void remover(@PathVariable String id) {
+	public void remover(@PathVariable Long id) {
 		service.delete(id);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Tributacao> atualizar(@PathVariable String id, @Valid @RequestBody Tributacao entity) {
+	public ResponseEntity<Tributacao> atualizar(@PathVariable Long id, @Valid @RequestBody Tributacao entity) {
 		Tributacao entitySaved = service.update(id, entity);
 		return ResponseEntity.ok(entitySaved);
 	}

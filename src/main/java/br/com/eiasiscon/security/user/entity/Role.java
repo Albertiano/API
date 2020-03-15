@@ -1,17 +1,17 @@
 package br.com.eiasiscon.security.user.entity;
 
 import java.util.Collection;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import br.com.eiasiscon.base.BaseEntity;
 
-@Document
+@Entity
 public class Role extends BaseEntity {
 	
-
-	private static final long serialVersionUID = -5466256226801840419L;
-	
 	private String name;
+	@OneToMany
 	private Collection<Privilege> privileges;
 	
 	public String getName() {

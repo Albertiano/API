@@ -22,6 +22,8 @@ import br.com.eiasiscon.pais.PaisRepository;
 import br.com.eiasiscon.security.user.entity.Privilege;
 import br.com.eiasiscon.security.user.entity.Role;
 import br.com.eiasiscon.security.user.entity.User;
+import br.com.eiasiscon.security.user.repository.PrivilegeRepository;
+import br.com.eiasiscon.security.user.repository.RoleRepository;
 import br.com.eiasiscon.security.user.repository.UserRepository;
 import br.com.eiasiscon.util.MunicipioXML;
 import br.com.eiasiscon.util.PaisXML;
@@ -39,6 +41,10 @@ public class PopularDadosEndpoint {
 	private MunicipioRepository municipioRepo;
 	@Autowired
     private UserRepository userRepository;
+	@Autowired
+    private PrivilegeRepository privilegeRepository;
+	@Autowired
+    private RoleRepository roleRepository;
     @Autowired
     BCryptPasswordEncoder passwordEncoder;
 
@@ -54,7 +60,7 @@ public class PopularDadosEndpoint {
 			List<Pais> paises = new PaisXML().realizaLeituraXML();
 			for(Pais p : paises){
 				this.paisRepo.save(p);
-				System.out.println(p);
+				//System.out.println(p.getxPais());
 			}
 			if(paises.size() > 0) {
 				msg.append(paises.size() + " paises adicionados");
@@ -68,7 +74,7 @@ public class PopularDadosEndpoint {
 			List<Municipio> municipios = new MunicipioXML().realizaLeituraXML();
 			for(Municipio m : municipios){
 				this.municipioRepo.save(m);
-				System.out.println(m);
+				//System.out.println(m.getxMun());
 			}
 			if(municipios.size() > 0) {
 				msg.append(municipios.size() + " municipios adicionados");
@@ -122,6 +128,7 @@ public class PopularDadosEndpoint {
 	        
 	        userRepository.save(user);
 	        msg.append("\nUsuario adicionado: " + user.getEmail());
+	        msg.append("Senha: 2010");
 	        
 	        List<Municipio> municipios = (List<Municipio>) municipioRepo.findByUf(UF.PB);
 	        

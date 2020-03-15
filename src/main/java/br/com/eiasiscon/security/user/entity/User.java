@@ -2,6 +2,7 @@ package br.com.eiasiscon.security.user.entity;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
@@ -21,7 +22,7 @@ public class User extends BaseEntity {
 	private String name;
 	@NotEmpty(message = "*Please provide your last name")
 	private String lastName;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private Collection<Role> roles;
 
 	public String getPassword() {

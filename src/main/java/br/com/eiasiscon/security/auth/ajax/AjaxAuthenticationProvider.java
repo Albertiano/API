@@ -41,7 +41,10 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
         String username = (String) authentication.getPrincipal();
         String password = (String) authentication.getCredentials();
 
-        User user = userService.getByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Usuario não encontrado: " + username));
+        User user = userService.getByUsername(username);
+        if(user == null) {
+        	throw new UsernameNotFoundException("Usuario não encontrado: " + username);
+        }
         
         if (!encoder.matches(password, user.getPassword())) {
             throw new BadCredentialsException("Falha na autenticão. Usuário ou senha inválidos.");

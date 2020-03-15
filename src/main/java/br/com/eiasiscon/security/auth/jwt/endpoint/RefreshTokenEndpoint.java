@@ -58,8 +58,10 @@ public class RefreshTokenEndpoint {
         }
 
         String subject = refreshToken.getSubject();
-        User user = userService.getByUsername(subject).orElseThrow(() -> new UsernameNotFoundException("Usuario não encontrado: " + subject));
-
+        User user = userService.getByUsername(subject);
+        if(user == null) {
+        	throw new UsernameNotFoundException("Usuario não encontrado: " + subject);
+        }
         if (user.getRoles() == null) throw new InsufficientAuthenticationException("O usuário não tem papéis atribuídos");
         
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();

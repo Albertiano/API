@@ -15,6 +15,5 @@ public interface MunicipioRepository extends JpaRepository<Municipio, Long> {
 	@Query("FROM Municipio m WHERE LOWER(m.xMun) like %:q%")
 	Page<Municipio> find(@Param("q") String q, Pageable pageable);
 
-	@Query("FROM Municipio m WHERE m.uf = :uf")
 	Collection<Municipio> findByUf(UF uf);
 }

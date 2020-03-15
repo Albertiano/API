@@ -2,7 +2,6 @@ package br.com.eiasiscon.empresa;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,9 +30,9 @@ public class EmpresaEndpoint extends BaseEndpoint<Empresa, Long> {
 	@GetMapping("/from-user")
 	public Page<Empresa> procurar(JwtAuthenticationToken token, @RequestParam String filter, Pageable pageable) {
 		UserContext principal = (UserContext) token.getPrincipal();
-		Optional<User> user = userService.getByUsername(principal.getUsername());
+		User user = userService.getByUsername(principal.getUsername());
 		
-		Page<Empresa> registros =  service.find(filter, user.get().getId(), pageable);
+		Page<Empresa> registros =  service.find(filter, user.getId(), pageable);
 		
 		return registros;
 	}

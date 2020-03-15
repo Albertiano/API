@@ -1,7 +1,5 @@
 package br.com.eiasiscon.security.profile.endpoint;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +18,7 @@ public class ProfileEndpoint {
 	UserRepository userRepository;
 	
     @RequestMapping(value="profile", method=RequestMethod.GET)
-    public Optional<User> get(JwtAuthenticationToken token) {    
+    public User get(JwtAuthenticationToken token) {    
     	UserContext user = (UserContext) token.getPrincipal();
         return userRepository.findByEmail(user.getUsername());
     }

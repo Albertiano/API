@@ -1,7 +1,5 @@
 package br.com.eiasiscon.security.user.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,7 +24,7 @@ public class UserService extends BaseService<User, Long> {
         return repository;
     }
 
-    public Optional<User> getByUsername(String username) {
+    public User getByUsername(String username) {
         return this.repository.findByEmail(username);
     }
     

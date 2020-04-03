@@ -20,10 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.eiasiscon.municipio.Municipio;
-import br.com.eiasiscon.municipio.MunicipioService;
-import br.com.eiasiscon.municipio.UF;
-
 @CrossOrigin
 @RestController
 @RequestMapping("/municipio")

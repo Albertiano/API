@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.eiasiscon.base.BaseService;
 import br.com.eiasiscon.contato.Contato;
-import br.com.eiasiscon.contato.ContatoRepository;
 
 @Service
 public class ContatoService extends BaseService<Contato, Long> {

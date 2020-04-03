@@ -38,30 +38,30 @@ public class PaisXML {
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document document = db.parse(getClass().getResourceAsStream(
-					"/paises.xml"));
+			Document document = db.parse(getClass().getResourceAsStream("/paises.xml"));
 			Element raiz = document.getDocumentElement();
-			NodeList listaContatos = raiz.getElementsByTagName("pais");
+			NodeList listElements = raiz.getElementsByTagName("pais");
 
-			for (int i = 0; i < listaContatos.getLength(); i++) {
-				Pais p = new Pais();
-				Element contato = (Element) listaContatos.item(i);
+			for (int i = 0; i < listElements.getLength(); i++) {
+				int cPais = 0;
+				String xPais = null;
 
-				if (obterValorElemento(contato, "codigo") != null) {
-					p.setcPais(Integer.parseInt(obterValorElemento(contato,
-							"codigo")));
+				Element element = (Element) listElements.item(i);
+
+				if (obterValorElemento(element, "codigo") != null) {
+					cPais = Integer.parseInt(obterValorElemento(element, "codigo"));
 				}
-				if (obterValorElemento(contato, "nome") != null) {
-					p.setxPais(obterValorElemento(contato, "nome"));
+				if (obterValorElemento(element, "nome") != null) {
+					xPais = obterValorElemento(element, "nome");
 				}
-				paises.add(p);
+				paises.add(Pais.builder().cPais(cPais).xPais(xPais).build());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return paises;
 	}
-	
+
 	public List<Pais> realizaLeituraXML(InputStream stream) {
 		List<Pais> paises = new ArrayList<Pais>();
 		try {
@@ -69,20 +69,21 @@ public class PaisXML {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document document = db.parse(stream);
 			Element raiz = document.getDocumentElement();
-			NodeList listaContatos = raiz.getElementsByTagName("pais");
+			NodeList listElements = raiz.getElementsByTagName("pais");
 
-			for (int i = 0; i < listaContatos.getLength(); i++) {
-				Pais p = new Pais();
-				Element contato = (Element) listaContatos.item(i);
+			for (int i = 0; i < listElements.getLength(); i++) {
+				int cPais = 0;
+				String xPais = null;
 
-				if (obterValorElemento(contato, "codigo") != null) {
-					p.setcPais(Integer.parseInt(obterValorElemento(contato,
-							"codigo")));
+				Element element = (Element) listElements.item(i);
+
+				if (obterValorElemento(element, "codigo") != null) {
+					cPais = Integer.parseInt(obterValorElemento(element, "codigo"));
 				}
-				if (obterValorElemento(contato, "nome") != null) {
-					p.setxPais(obterValorElemento(contato, "nome"));
+				if (obterValorElemento(element, "nome") != null) {
+					xPais = obterValorElemento(element, "nome");
 				}
-				paises.add(p);
+				paises.add(Pais.builder().cPais(cPais).xPais(xPais).build());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

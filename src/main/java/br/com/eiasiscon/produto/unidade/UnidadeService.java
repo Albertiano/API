@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.eiasiscon.base.BaseService;
 import br.com.eiasiscon.produto.unidade.Unidade;
-import br.com.eiasiscon.produto.unidade.UnidadeRepository;
 
 @Service
 public class UnidadeService extends BaseService<Unidade, String> {

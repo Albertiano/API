@@ -65,7 +65,7 @@ public class IBPTEndpoint {
 		            if(tipo.equalsIgnoreCase("0")) {
 		            	DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		            	
-    		            IBPT ibpt = new IBPT();    		            
+    		            IBPT ibpt = IBPT.builder().build();    		            
     		            ibpt.setCodigo(codigo);
     		            ibpt.setTipo(tipo);
     		            ibpt.setDescricao(descricao);

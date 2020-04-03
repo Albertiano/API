@@ -82,49 +82,24 @@ public class PopularDadosEndpoint {
 		}
 		
 		if(gerarUser) {
-			Privilege pADMIN = new Privilege();
-	    	pADMIN.setActive(true);
-	    	pADMIN.setName("ADMIN");
-	    	//privilegeRepository.save(pADMIN);
-	    	
-	    	Privilege pUSER = new Privilege();
-	    	pUSER.setActive(true);
-	    	pUSER.setName("USER");
-	    	//privilegeRepository.save(pUSER);
-	    	
-	    	Privilege pPROD = new Privilege();
-	    	pPROD.setActive(true);
-	    	pPROD.setName("PROD");
-	    	//privilegeRepository.save(pPROD);
-	    	
-	    	Privilege pDESEN = new Privilege();
-	    	pDESEN.setActive(true);
-	    	pDESEN.setName("DES");
-	    	//privilegeRepository.save(pDESEN);
-	    	
-	    	Role r = new Role();
-	    	r.setActive(true);
-	    	r.setName("ADMIN");
-	    	
+			Privilege pADMIN = Privilege.builder().name("ADMIN").build();
+			// privilegeRepository.save(pADMIN);
 
-	    	List<Privilege> lP = new ArrayList<Privilege>();
-	    	r.setPrivileges(lP);
-	    	r.getPrivileges().add(pADMIN);
-	    	r.getPrivileges().add(pUSER);
-	    	r.getPrivileges().add(pPROD); 
-	    	r.getPrivileges().add(pDESEN);
-	    	
-	    	//roleRepository.save(r);
-	    	
-	    	List<Role> lR = new ArrayList<Role>();
-	    	User user = new User();
-	    	user.setRoles(lR);   	
-	    	user.getRoles().add(r);
-	    	user.setActive(true);
-	    	user.setEmail("admin@admin.com");
-	    	user.setLastName("Admin");
-	    	user.setName("Administrador");    	
-	        user.setPassword(passwordEncoder.encode("2010"));
+			Role r = Role.builder().name("ADMIN").build();
+
+			List<Privilege> lP = new ArrayList<Privilege>();
+			r.setPrivileges(lP);
+			r.getPrivileges().add(pADMIN);
+
+			// roleRepository.save(r);
+
+			User user = User.builder().roles(new ArrayList<Role>()).build();
+			user.getRoles().add(r);
+			user.setActive(true);
+			user.setEmail("admin@admin.com");
+			user.setLastName("Admin");
+			user.setName("Administrador");
+			user.setPassword(passwordEncoder.encode("2010"));
 	        
 	        userRepository.save(user);
 	        msg.append("\nUsuario adicionado: " + user.getEmail());
@@ -132,13 +107,16 @@ public class PopularDadosEndpoint {
 	        
 	        List<Municipio> municipios = (List<Municipio>) municipioRepo.findByUf(UF.PB);
 	        
-	        Empresa empresa = new Empresa();
-	        empresa.setUsers(new ArrayList<User>());
-	        empresa.setNome("Empresa Padrão");
+	        Empresa empresa = Empresa.builder()
+	        		.users(new ArrayList<User>())
+	        		.nome("Empresa Padrão")
+	        		.municipio(municipios.get(13))
+	        		.pais(paisRepo.findAll().get(26))
+	        		.crt(CRT.SIMPLES_NACIONAL)
+	        		.build();
+	        
 	        empresa.getUsers().add(user);	        
-	        empresa.setMunicipio(municipios.get(13));	        
-	        empresa.setPais(paisRepo.findAll().get(26));
-	        empresa.setCrt(CRT.SIMPLES_NACIONAL);
+	        
 	        empresaRepo.save(empresa);
 	        
 		}

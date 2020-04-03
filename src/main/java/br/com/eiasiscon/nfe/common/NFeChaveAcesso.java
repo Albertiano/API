@@ -14,7 +14,7 @@ public class NFeChaveAcesso {
 		String cUF = nf.getEmpresa().getMunicipio().getUf().getCUF();                           // Código da UF do emitente do Documento Fiscal.
 		String data = ConversorDate.retornaDataHora(nf.getDhEmi()).replaceAll("[^0-9]", ""); 
 		String dataAAMM = data.substring(6, 8)+data.substring(2,4);               // Ano e Mês de emissão da NF-e.
-		String cnpjCpf = nf.getEmitente().getNumDoc();   // CNPJ do emitente.
+		String cnpjCpf = nf.getEmpresa().getNumDoc();   // CNPJ do emitente.
 		if (cnpjCpf != null) {
 			cnpjCpf = cnpjCpf.replaceAll("[^0-9]", "");
 		}else{

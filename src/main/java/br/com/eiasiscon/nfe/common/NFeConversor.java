@@ -105,7 +105,7 @@ public class NFeConversor {
         int item = 0;
         for (ItemNotaFiscal i : nf.getItens()) {
         	item++;
-        	i.setnItem(item);
+        	i.setNItem(item);
             infNFe.getDet().add(dadosDoProduto(i));
         }
         infNFe.setTotal(totaisDaNFe(nf));
@@ -121,7 +121,7 @@ public class NFeConversor {
 
     private static Ide dadosDeIdentificacao(NotaFiscal nf) {
         Ide ide = new Ide();
-        ide.setCUF(nf.getEmitente().getMunicipio().getUf().getCUF());
+        ide.setCUF(nf.getEmpresa().getMunicipio().getUf().getCUF());
 
         String dEmis = ConversorDate.retornaDataHora(nf.getDhEmi()).replaceAll("[^0-9]", "");
         
@@ -135,7 +135,7 @@ public class NFeConversor {
         ide.setDhSaiEnt(ConversorDate.retornaDataHoraNFe(nf.getDhSaiEnt()));
         ide.setTpNF(nf.getTpNF().getValor());
         ide.setIdDest(nf.getIdDest().getValor());
-        ide.setCMunFG(String.valueOf(nf.getEmitente().getMunicipio().getcMun()));
+        ide.setCMunFG(String.valueOf(nf.getEmpresa().getMunicipio().getCMun()));
         ide.setTpImp(nf.getTpImp().getValor());
         ide.setTpEmis(nf.getTpEmis());
         ide.setCDV(nf.getChave().substring(43));
@@ -156,7 +156,7 @@ public class NFeConversor {
     }
 
     private static Emit dadosDoEmitente(NotaFiscal nf) {
-        Empresa em = nf.getEmitente();
+        Empresa em = nf.getEmpresa();
         Emit emit = new Emit();
         if(em.getNumDoc()!=null){
         	if(em.getTpDoc().equals(TpDoc.CNPJ)){
@@ -180,14 +180,14 @@ public class NFeConversor {
         if(em.getComplemento()!=null){
         	enderEmit.setXCpl(em.getComplemento().trim());
         }        
-        enderEmit.setCMun(String.valueOf(em.getMunicipio().getcMun()));
-        enderEmit.setXMun(em.getMunicipio().getxMun());
+        enderEmit.setCMun(String.valueOf(em.getMunicipio().getCMun()));
+        enderEmit.setXMun(em.getMunicipio().getXMun());
         enderEmit.setUF(TUfEmi.valueOf(em.getMunicipio().getUf().toString()));
         if (em.getCep() != null) {
             enderEmit.setCEP(em.getCep().replaceAll("[^0-9]", ""));
         }
-        enderEmit.setCPais(String.valueOf(em.getPais().getcPais()));
-        enderEmit.setXPais(em.getPais().getxPais());
+        enderEmit.setCPais(String.valueOf(em.getPais().getCPais()));
+        enderEmit.setXPais(em.getPais().getXPais());
         if (em.getFone() != null) {
             enderEmit.setFone(em.getFone().replaceAll("[^0-9]", ""));
         }
@@ -235,13 +235,13 @@ public class NFeConversor {
         }else if(c.getComplemento().isEmpty()){
         	enderDest.setXCpl(null);
         }
-        enderDest.setCMun(String.valueOf(c.getMunicipio().getcMun()));
-        enderDest.setXMun(c.getMunicipio().getxMun());
+        enderDest.setCMun(String.valueOf(c.getMunicipio().getCMun()));
+        enderDest.setXMun(c.getMunicipio().getXMun());
         enderDest.setUF(TUf.valueOf(c.getMunicipio().getUf().toString()));
         
         enderDest.setCEP(c.getCep().replaceAll("[^0-9]", ""));
-        enderDest.setCPais(String.valueOf(c.getPais().getcPais()));
-        enderDest.setXPais(c.getPais().getxPais());
+        enderDest.setCPais(String.valueOf(c.getPais().getCPais()));
+        enderDest.setXPais(c.getPais().getXPais());
         if (c.getFone() != null) {
             enderDest.setFone(c.getFone().replaceAll("[^0-9]", ""));
         }
@@ -270,15 +270,15 @@ public class NFeConversor {
 
     private static Det dadosDoProduto(ItemNotaFiscal i) {
         Det det = new Det();
-        det.setNItem(String.valueOf(i.getnItem()));
+        det.setNItem(String.valueOf(i.getNItem()));
 
         /**
          * Dados do Produro
          */
         Prod prod = new Prod();
         prod.setCProd(i.getProduto().getCodigo());
-        prod.setCEAN(i.getProduto().getcEan());
-        if(i.getProduto().getcEan()==null){
+        prod.setCEAN(i.getProduto().getCEan());
+        if(i.getProduto().getCEan()==null){
             prod.setCEAN("");
         }
         prod.setXProd(i.getProduto().getDescricao().trim());
@@ -291,8 +291,8 @@ public class NFeConversor {
         prod.setVProd(ConversorBigDecimal.paraStringNFeValor(i.getSubtotal()));
         prod.setUTrib(i.getProduto().getUtrib().getSigla());
         prod.setQTrib(ConversorBigDecimal.paraStringNFeQuant(i.getDetFiscal().getqTrib()));
-        prod.setCEANTrib(i.getProduto().getcEanTrib());
-        if(i.getProduto().getcEanTrib()==null){
+        prod.setCEANTrib(i.getProduto().getCEanTrib());
+        if(i.getProduto().getCEanTrib()==null){
             prod.setCEANTrib("");
         }
         prod.setVUnTrib(ConversorBigDecimal.paraStringNFePreco(i.getDetFiscal().getVuntrib()));
@@ -349,9 +349,9 @@ public class NFeConversor {
                 _00.setOrig(d.getIcms().getOrigem().getValor());
                 _00.setCST(d.getIcms().getCstICMS().getValor());
                 _00.setModBC(d.getIcms().getModBCICMS().getValor());
-                _00.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCICMS()));
-                _00.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMS()));
-                _00.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMS()));
+                _00.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCICMS()));
+                _00.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMS()));
+                _00.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMS()));
                 icms.setICMS00(_00);
                 break;
             case ICMS_10:
@@ -359,17 +359,17 @@ public class NFeConversor {
                 _10.setOrig(d.getIcms().getOrigem().getValor());
                 _10.setCST(d.getIcms().getCstICMS().getValor());
                 _10.setModBC(d.getIcms().getModBCICMS().getValor());
-                _10.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCICMS()));
-                _10.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMS()));
-                _10.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMS()));
+                _10.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCICMS()));
+                _10.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMS()));
+                _10.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMS()));
                 _10.setModBCST(d.getIcms().getModBCST().getValor());
-                _10.setPMVAST(d.getIcms().getpMVAST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpMVAST()) : null);
-                _10.setPRedBCST(d.getIcms().getpRedBCST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCST()) : null);
-                _10.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCST()));
-                _10.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMSST()));
-                _10.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSST()));
+                _10.setPMVAST(d.getIcms().getPMVAST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPMVAST()) : null);
+                _10.setPRedBCST(d.getIcms().getPRedBCST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCST()) : null);
+                _10.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCST()));
+                _10.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMSST()));
+                _10.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSST()));
                 icms.setICMS10(_10);
                 break;
             case ICMS_20:
@@ -377,11 +377,11 @@ public class NFeConversor {
                 _20.setOrig(d.getIcms().getOrigem().getValor());
                 _20.setCST(d.getIcms().getCstICMS().getValor());
                 _20.setModBC(d.getIcms().getModBCICMS().getValor());
-                _20.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCICMS()));
-                _20.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMS()));
-                _20.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMS()));
-                _20.setVICMSDeson(d.getIcms().getvICMSDeson().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getvICMSDeson()) : null);
+                _20.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCICMS()));
+                _20.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMS()));
+                _20.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMS()));
+                _20.setVICMSDeson(d.getIcms().getVICMSDeson().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getVICMSDeson()) : null);
                 _20.setMotDesICMS(d.getIcms().getMotDesICMS().getValor());
                 icms.setICMS20(_20);
                 break;
@@ -389,25 +389,25 @@ public class NFeConversor {
                 ICMS30 _30 = new ICMS30();
                 _30.setOrig(d.getIcms().getOrigem().getValor());
                 _30.setCST(d.getIcms().getCstICMS().getValor());
-                _30.setVICMSDeson(d.getIcms().getvICMSDeson().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getvICMSDeson()) : null);
+                _30.setVICMSDeson(d.getIcms().getVICMSDeson().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getVICMSDeson()) : null);
                 _30.setMotDesICMS(d.getIcms().getMotDesICMS().getValor());
                 _30.setModBCST(d.getIcms().getModBCST().getValor());
-                _30.setPMVAST(d.getIcms().getpMVAST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpMVAST()) : null);
-                _30.setPRedBCST(d.getIcms().getpRedBCST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCST()) : null);
-                _30.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCST()));
-                _30.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMSST()));
-                _30.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSST()));
+                _30.setPMVAST(d.getIcms().getPMVAST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPMVAST()) : null);
+                _30.setPRedBCST(d.getIcms().getPRedBCST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCST()) : null);
+                _30.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCST()));
+                _30.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMSST()));
+                _30.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSST()));
                 icms.setICMS30(_30);
                 break;
             case ICMS_40:
                 ICMS40 _40 = new ICMS40();
                 _40.setOrig(d.getIcms().getOrigem().getValor());
                 _40.setCST(d.getIcms().getCstICMS().getValor());
-                _40.setVICMSDeson(d.getIcms().getvICMSDeson().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSDeson()) : null);
+                _40.setVICMSDeson(d.getIcms().getVICMSDeson().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSDeson()) : null);
                 _40.setMotDesICMS(d.getIcms().getMotDesICMS().getValor());
                 icms.setICMS40(_40);
                 break;
@@ -415,8 +415,8 @@ public class NFeConversor {
                 ICMS40 _41 = new ICMS40();
                 _41.setOrig(d.getIcms().getOrigem().getValor());
                 _41.setCST(d.getIcms().getCstICMS().getValor());
-                _41.setVICMSDeson(d.getIcms().getvICMSDeson().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSDeson()) : null);
+                _41.setVICMSDeson(d.getIcms().getVICMSDeson().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSDeson()) : null);
                 _41.setMotDesICMS(d.getIcms().getMotDesICMS().getValor());
                 icms.setICMS40(_41);
                 break;
@@ -424,8 +424,8 @@ public class NFeConversor {
                 ICMS40 _50 = new ICMS40();
                 _50.setOrig(d.getIcms().getOrigem().getValor());
                 _50.setCST(d.getIcms().getCstICMS().getValor());
-                _50.setVICMSDeson(d.getIcms().getvICMSDeson().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getvICMSDeson()) : null);
+                _50.setVICMSDeson(d.getIcms().getVICMSDeson().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getVICMSDeson()) : null);
                 _50.setMotDesICMS(d.getIcms().getMotDesICMS().getValor());
                 icms.setICMS40(_50);
                 break;
@@ -433,13 +433,13 @@ public class NFeConversor {
                 ICMS51 _51 = new ICMS51();
                 _51.setOrig(d.getIcms().getOrigem().getValor());
                 _51.setCST(d.getIcms().getCstICMS().getValor());
-                _51.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCICMS()));
-                _51.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCICMS()));
-                _51.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMS()));
+                _51.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCICMS()));
+                _51.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCICMS()));
+                _51.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMS()));
                 _51.setVICMSOp(null);
                 _51.setPDif(null);
                 _51.setVICMSDif(null);
-                _51.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMS()));
+                _51.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMS()));
                 icms.setICMS51(_51);
                 break;
             case ICMS_60:
@@ -455,20 +455,20 @@ public class NFeConversor {
                 _70.setOrig(d.getIcms().getOrigem().getValor());
                 _70.setCST(d.getIcms().getCstICMS().getValor());
                 _70.setModBC(d.getIcms().getModBCICMS().getValor());
-                _70.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCICMS()));
-                _70.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCICMS()));
-                _70.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMS()));
-                _70.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMS()));
+                _70.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCICMS()));
+                _70.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCICMS()));
+                _70.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMS()));
+                _70.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMS()));
                 _70.setModBCST(d.getIcms().getModBCST().getValor());
-                _70.setPMVAST(d.getIcms().getpMVAST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpMVAST()) : null);
-                _70.setPRedBCST(d.getIcms().getpRedBCST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCST()) : null);
-                _70.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCST()));
-                _70.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMSST()));
-                _70.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSST()));
-                _70.setVICMSDeson(d.getIcms().getvICMSDeson().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getvICMSDeson()) : null);
+                _70.setPMVAST(d.getIcms().getPMVAST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPMVAST()) : null);
+                _70.setPRedBCST(d.getIcms().getPRedBCST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCST()) : null);
+                _70.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCST()));
+                _70.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMSST()));
+                _70.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSST()));
+                _70.setVICMSDeson(d.getIcms().getVICMSDeson().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getVICMSDeson()) : null);
                 _70.setMotDesICMS(d.getIcms().getMotDesICMS().getValor());
                 icms.setICMS70(_70);
                 break;
@@ -477,20 +477,20 @@ public class NFeConversor {
                 _90.setOrig(d.getIcms().getOrigem().getValor());
                 _90.setCST(d.getIcms().getCstICMS().getValor());
                 _90.setModBC(d.getIcms().getModBCICMS().getValor());
-                _90.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCICMS()));
-                _90.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCICMS()));
-                _90.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMS()));
-                _90.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMS()));
+                _90.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCICMS()));
+                _90.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCICMS()));
+                _90.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMS()));
+                _90.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMS()));
                 _90.setModBCST(d.getIcms().getModBCST().getValor());
-                _90.setPMVAST(d.getIcms().getpMVAST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpMVAST()) : null);
-                _90.setPRedBCST(d.getIcms().getpRedBCST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCST()) : null);
-                _90.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCST()));
-                _90.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMSST()));
-                _90.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSST()));
-                _90.setVICMSDeson(d.getIcms().getvICMSDeson().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getvICMSDeson()) : null);
+                _90.setPMVAST(d.getIcms().getPMVAST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPMVAST()) : null);
+                _90.setPRedBCST(d.getIcms().getPRedBCST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCST()) : null);
+                _90.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCST()));
+                _90.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMSST()));
+                _90.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSST()));
+                _90.setVICMSDeson(d.getIcms().getVICMSDeson().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getVICMSDeson()) : null);
                 _90.setMotDesICMS(d.getIcms().getMotDesICMS().getValor());
                 icms.setICMS90(_90);
                 break;
@@ -499,19 +499,19 @@ public class NFeConversor {
                 p10.setOrig(d.getIcms().getOrigem().getValor());
                 p10.setCST(d.getIcms().getCstICMS().getValor());
                 p10.setModBC(d.getIcms().getModBCICMS().getValor());
-                p10.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCICMS()));
-                p10.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCICMS()));
-                p10.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMS()));
-                p10.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMS()));
+                p10.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCICMS()));
+                p10.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCICMS()));
+                p10.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMS()));
+                p10.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMS()));
                 p10.setModBCST(d.getIcms().getModBCST().getValor());
-                p10.setPMVAST(d.getIcms().getpMVAST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpMVAST()) : null);
-                p10.setPRedBCST(d.getIcms().getpRedBCST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCST()) : null);
-                p10.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCST()));
-                p10.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMSST()));
-                p10.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSST()));
-                p10.setPBCOp(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpBCOp()));
+                p10.setPMVAST(d.getIcms().getPMVAST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPMVAST()) : null);
+                p10.setPRedBCST(d.getIcms().getPRedBCST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCST()) : null);
+                p10.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCST()));
+                p10.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMSST()));
+                p10.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSST()));
+                p10.setPBCOp(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPBCOp()));
                 p10.setUFST(TUf.valueOf(d.getIcms().getUFST().toString()));
                 icms.setICMSPart(p10);
                 break;
@@ -1803,7 +1803,7 @@ public class NFeConversor {
     private static COFINSST getcofinsST(ItemNotaFiscal i) {
     	br.com.eiasiscon.produto.tributacao.cofins.COFINSST p = i.getDetFiscal().getCofinsST();
         if (p == null) {
-            p = new br.com.eiasiscon.produto.tributacao.cofins.COFINSST();
+            p = br.com.eiasiscon.produto.tributacao.cofins.COFINSST.builder().build();
         }
         COFINSST cofinsSTST = new COFINSST();
         TpCalcCOFINS tpCalc = p.getTpCalcCOFINSST();
@@ -1812,14 +1812,14 @@ public class NFeConversor {
         }
         switch (tpCalc) {
             case ALIQUOTA:
-                cofinsSTST.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINSST()));
-                cofinsSTST.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINSST()));
-                cofinsSTST.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINSST()));
+                cofinsSTST.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINSST()));
+                cofinsSTST.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINSST()));
+                cofinsSTST.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINSST()));
                 break;
             case UNIDADE:
-                cofinsSTST.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINSST()));
-                cofinsSTST.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINSST()));
-                cofinsSTST.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINSST()));
+                cofinsSTST.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINSST()));
+                cofinsSTST.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINSST()));
+                cofinsSTST.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINSST()));
                 break;
 
             default:
@@ -1833,25 +1833,25 @@ public class NFeConversor {
         Total total = new Total();
 
         ICMSTot icmstot = new ICMSTot();
-        icmstot.setVBC(ConversorBigDecimal.paraStringNFeValor(t.getvBC()));
-        icmstot.setVICMS(ConversorBigDecimal.paraStringNFeValor(t.getvICMS()));
-        icmstot.setVBCST(ConversorBigDecimal.paraStringNFeValor(t.getvBCST()));
-        icmstot.setVST(ConversorBigDecimal.paraStringNFeValor(t.getvST()));
-        icmstot.setVProd(ConversorBigDecimal.paraStringNFeValor(t.getvProd()));
-        icmstot.setVFrete(ConversorBigDecimal.paraStringNFeValor(t.getvFrete()));
-        icmstot.setVSeg(ConversorBigDecimal.paraStringNFeValor(t.getvSeg()));
-        icmstot.setVDesc(ConversorBigDecimal.paraStringNFeValor(t.getvDesc()));
-        icmstot.setVII(ConversorBigDecimal.paraStringNFeValor(t.getvII()));
-        icmstot.setVIPI(ConversorBigDecimal.paraStringNFeValor(t.getvIPI()));
-        icmstot.setVPIS(ConversorBigDecimal.paraStringNFeValor(t.getvPIS()));
-        icmstot.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(t.getvCOFINS()));
-        icmstot.setVOutro(ConversorBigDecimal.paraStringNFeValor(t.getvOutro()));
-        icmstot.setVNF(ConversorBigDecimal.paraStringNFeValor(t.getvNF()));
-        icmstot.setVICMSDeson(ConversorBigDecimal.paraStringNFeValor(t.getvICMSDeson()));
-        icmstot.setVFCP(ConversorBigDecimal.paraStringNFeValor(t.getvFCP()));
-        icmstot.setVFCPST(ConversorBigDecimal.paraStringNFeValor(t.getvFCPST()));
-        icmstot.setVFCPSTRet(ConversorBigDecimal.paraStringNFeValor(t.getvFCPSTRet()));
-        icmstot.setVIPIDevol(ConversorBigDecimal.paraStringNFeValor(t.getvIPIDevol()));
+        icmstot.setVBC(ConversorBigDecimal.paraStringNFeValor(t.getVBC()));
+        icmstot.setVICMS(ConversorBigDecimal.paraStringNFeValor(t.getVICMS()));
+        icmstot.setVBCST(ConversorBigDecimal.paraStringNFeValor(t.getVBCST()));
+        icmstot.setVST(ConversorBigDecimal.paraStringNFeValor(t.getVST()));
+        icmstot.setVProd(ConversorBigDecimal.paraStringNFeValor(t.getVProd()));
+        icmstot.setVFrete(ConversorBigDecimal.paraStringNFeValor(t.getVFrete()));
+        icmstot.setVSeg(ConversorBigDecimal.paraStringNFeValor(t.getVSeg()));
+        icmstot.setVDesc(ConversorBigDecimal.paraStringNFeValor(t.getVDesc()));
+        icmstot.setVII(ConversorBigDecimal.paraStringNFeValor(t.getVII()));
+        icmstot.setVIPI(ConversorBigDecimal.paraStringNFeValor(t.getVIPI()));
+        icmstot.setVPIS(ConversorBigDecimal.paraStringNFeValor(t.getVPIS()));
+        icmstot.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(t.getVCOFINS()));
+        icmstot.setVOutro(ConversorBigDecimal.paraStringNFeValor(t.getVOutro()));
+        icmstot.setVNF(ConversorBigDecimal.paraStringNFeValor(t.getVNF()));
+        icmstot.setVICMSDeson(ConversorBigDecimal.paraStringNFeValor(t.getVICMSDeson()));
+        icmstot.setVFCP(ConversorBigDecimal.paraStringNFeValor(t.getVFCP()));
+        icmstot.setVFCPST(ConversorBigDecimal.paraStringNFeValor(t.getVFCPST()));
+        icmstot.setVFCPSTRet(ConversorBigDecimal.paraStringNFeValor(t.getVFCPSTRet()));
+        icmstot.setVIPIDevol(ConversorBigDecimal.paraStringNFeValor(t.getVIPIDevol()));
         total.setICMSTot(icmstot);
 
         return total;
@@ -1888,7 +1888,7 @@ public class NFeConversor {
                 transporta.setXEnder(t.getTransporta().getLogradouro());
             }
             
-            transporta.setXMun(t.getTransporta().getMunicipio().getxMun());
+            transporta.setXMun(t.getTransporta().getMunicipio().getXMun());
             
             if (t.getTransporta().getMunicipio().getUf() != null ) {
             	transporta.setUF(TUf.valueOf(t.getTransporta().getMunicipio().getUf().toString()));
@@ -1978,8 +1978,8 @@ public class NFeConversor {
     		if(d.getIndPag() != null) {
     			detPag.setIndPag(d.getIndPag().getValor());
     		}
-            detPag.setTPag(d.gettPag().getValor());
-            detPag.setVPag(ConversorBigDecimal.paraStringNFeValor(d.getvPag()));
+            detPag.setTPag(d.getTPag().getValor());
+            detPag.setVPag(ConversorBigDecimal.paraStringNFeValor(d.getVPag()));
             
             pag.getDetPag().add(detPag);
     	}
@@ -1992,10 +1992,10 @@ public class NFeConversor {
 
         Fat fat = new Fat();
         if(c != null) {
-        	fat.setNFat(c.getFat().getnFat());
-            fat.setVOrig(ConversorBigDecimal.paraStringNFeValor(c.getFat().getvOrig()));
-            fat.setVDesc(ConversorBigDecimal.paraStringNFeValor(c.getFat().getvDesc()));
-            fat.setVLiq(ConversorBigDecimal.paraStringNFeValor(c.getFat().getvLiq()));
+        	fat.setNFat(c.getFat().getNFat());
+            fat.setVOrig(ConversorBigDecimal.paraStringNFeValor(c.getFat().getVOrig()));
+            fat.setVDesc(ConversorBigDecimal.paraStringNFeValor(c.getFat().getVDesc()));
+            fat.setVLiq(ConversorBigDecimal.paraStringNFeValor(c.getFat().getVLiq()));
             if (!fat.getNFat().isEmpty()) {
                 cobr.setFat(fat);
             }

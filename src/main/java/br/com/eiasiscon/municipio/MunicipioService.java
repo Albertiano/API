@@ -7,8 +7,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.eiasiscon.base.BaseService;
 import br.com.eiasiscon.municipio.Municipio;
-import br.com.eiasiscon.municipio.MunicipioRepository;
-import br.com.eiasiscon.municipio.UF;
 
 @Service
 public class MunicipioService  extends BaseService<Municipio, Long>{

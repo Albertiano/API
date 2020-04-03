@@ -1,14 +1,18 @@
 package br.com.eiasiscon.produto.tributacao.ipi;
 
 import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-
 import br.com.eiasiscon.base.BaseEntity;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
+@EqualsAndHashCode(callSuper=false)
+@Data
+@Builder(toBuilder=true)
 public class IPI extends BaseEntity {
     /*
      * CNPJ do produtor da mercadoria, quando  diferente  do  emitente. 
@@ -61,210 +65,4 @@ public class IPI extends BaseEntity {
     
     private boolean vIpiBcICMS;
     private boolean vIpiBcICMSST;
-
-    public IPI() {
-    }
-
-    public IPI(String CNPJProd, String cSelo, BigDecimal qSelo, String cEnq, CST_IPI cstIPI, BigDecimal vBCIPI, BigDecimal pIPI, BigDecimal qUnid, BigDecimal vUnid, BigDecimal vIPI, TpCalcIPI tpCalcIPI, boolean vIpiBcICMS, boolean vIpiBcICMSST) {
-        this.CNPJProd = CNPJProd;
-        this.cSelo = cSelo;
-        this.qSelo = qSelo;
-        this.cEnq = cEnq;
-        this.cstIPI = cstIPI;
-        this.vBCIPI = vBCIPI;
-        this.pIPI = pIPI;
-        this.qUnid = qUnid;
-        this.vUnid = vUnid;
-        this.vIPI = vIPI;
-        this.tpCalcIPI = tpCalcIPI;
-        this.vIpiBcICMS = vIpiBcICMS;
-        this.vIpiBcICMSST = vIpiBcICMSST;
-    }
-
-    /**
-     * @return the CNPJProd
-     */
-    public String getCNPJProd() {
-        return CNPJProd;
-    }
-
-    /**
-     * @param CNPJProd the CNPJProd to set
-     */
-    public void setCNPJProd(String CNPJProd) {
-        this.CNPJProd = CNPJProd;
-    }
-
-    /**
-     * @return the cSelo
-     */
-    public String getcSelo() {
-        return cSelo;
-    }
-
-    /**
-     * @param cSelo the cSelo to set
-     */
-    public void setcSelo(String cSelo) {
-        this.cSelo = cSelo;
-    }
-
-    /**
-     * @return the qSelo
-     */
-    public BigDecimal getqSelo() {
-        return qSelo;
-    }
-
-    /**
-     * @param qSelo the qSelo to set
-     */
-    public void setqSelo(BigDecimal qSelo) {
-        this.qSelo = qSelo;
-    }
-
-    /**
-     * @return the cEnq
-     */
-    public String getcEnq() {
-        return cEnq;
-    }
-
-    /**
-     * @param cEnq the cEnq to set
-     */
-    public void setcEnq(String cEnq) {
-        this.cEnq = cEnq;
-    }
-
-    /**
-     * @return the cstIPI
-     */
-    public CST_IPI getCstIPI() {
-        return cstIPI;
-    }
-
-    /**
-     * @param cstIPI the cstIPI to set
-     */
-    public void setCstIPI(CST_IPI cstIPI) {
-        this.cstIPI = cstIPI;
-    }
-
-    /**
-     * @return the vBCIPI
-     */
-    public BigDecimal getvBCIPI() {
-        return vBCIPI;
-    }
-
-    /**
-     * @param vBCIPI the vBCIPI to set
-     */
-    public void setvBCIPI(BigDecimal vBCIPI) {
-        this.vBCIPI = vBCIPI;
-    }
-
-    /**
-     * @return the pIPI
-     */
-    public BigDecimal getpIPI() {
-        return pIPI;
-    }
-
-    /**
-     * @param pIPI the pIPI to set
-     */
-    public void setpIPI(BigDecimal pIPI) {
-        this.pIPI = pIPI;
-    }
-
-    /**
-     * @return the qUnid
-     */
-    public BigDecimal getqUnid() {
-        return qUnid;
-    }
-
-    /**
-     * @param qUnid the qUnid to set
-     */
-    public void setqUnid(BigDecimal qUnid) {
-        this.qUnid = qUnid;
-    }
-
-    /**
-     * @return the vUnid
-     */
-    public BigDecimal getvUnid() {
-        return vUnid;
-    }
-
-    /**
-     * @param vUnid the vUnid to set
-     */
-    public void setvUnid(BigDecimal vUnid) {
-        this.vUnid = vUnid;
-    }
-
-    /**
-     * @return the vIPI
-     */
-    public BigDecimal getvIPI() {
-    	if(vIPI==null){
-    		vIPI=BigDecimal.ZERO;
-    	}
-        return vIPI;
-    }
-
-    /**
-     * @param vIPI the vIPI to set
-     */
-    public void setvIPI(BigDecimal vIPI) {
-        this.vIPI = vIPI;
-    }
-
-    /**
-     * @return the tpCalcIPI
-     */
-    public TpCalcIPI getTpCalcIPI() {
-        return tpCalcIPI;
-    }
-
-    /**
-     * @param tpCalcIPI the tpCalcIPI to set
-     */
-    public void setTpCalcIPI(TpCalcIPI tpCalcIPI) {
-        this.tpCalcIPI = tpCalcIPI;
-    }
-
-    /**
-     * @return the vIpiBcICMS
-     */
-    public boolean getvIpiBcICMS() {
-        return vIpiBcICMS;
-    }
-
-    /**
-     * @param vIpiBcICMS the vIpiBcICMS to set
-     */
-    public void setvIpiBcICMS(boolean vIpiBcICMS) {
-        this.vIpiBcICMS = vIpiBcICMS;
-    }
-
-    /**
-     * @return the vIpiBcICMSST
-     */
-    public boolean getvIpiBcICMSST() {
-        return vIpiBcICMSST;
-    }
-
-    /**
-     * @param vIpiBcICMSST the vIpiBcICMSST to set
-     */
-    public void setvIpiBcICMSST(boolean vIpiBcICMSST) {
-        this.vIpiBcICMSST = vIpiBcICMSST;
-    }
-
-    
 }

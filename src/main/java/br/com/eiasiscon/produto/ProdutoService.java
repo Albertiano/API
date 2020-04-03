@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.eiasiscon.base.BaseService;
 import br.com.eiasiscon.produto.Produto;
-import br.com.eiasiscon.produto.ProdutoRepository;
+
 @Service
 public class ProdutoService extends BaseService<Produto, Long> {
 	

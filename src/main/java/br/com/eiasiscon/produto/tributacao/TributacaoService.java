@@ -11,9 +11,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.eiasiscon.base.BaseService;
 import br.com.eiasiscon.municipio.UF;
-import br.com.eiasiscon.produto.tributacao.Destino;
-import br.com.eiasiscon.produto.tributacao.Tributacao;
-import br.com.eiasiscon.produto.tributacao.TributacaoRepository;
 import br.com.eiasiscon.produto.tributacao.cofins.COFINS;
 import br.com.eiasiscon.produto.tributacao.cofins.CST_COFINS;
 import br.com.eiasiscon.produto.tributacao.icms.CST_ICMS;
@@ -43,69 +40,58 @@ public class TributacaoService extends BaseService<Tributacao, Long> {
 	}
 	
 	public Tributacao instance() {
-		Tributacao entity = new Tributacao();
-		entity.setNome("Padrão");
-		entity.setDescricao("Descrição Padrão");
-		if(entity.getDestinos() == null) {
-			entity.setDestinos(createDestinos());
-		}
-		return entity;
+		return Tributacao.builder().nome("Padrão").descricao("Descrição Padrão").destinos(createDestinos()).build();
 	}
 	
 	private List<Destino> createDestinos() {
-        List<Destino> destinos = new ArrayList<>();
-        for (UF uf : UF.values()) {
-            Destino d = new Destino();            
-            d.setEstado(uf);
-            if(uf.equals(UF.PB)) {
-            	d.setCfop("5102");
-            } else {
-            	d.setCfop("6102");
-            }
-            d.setIcms(createICMS());
-            d.setIpi(createIPI());
-            d.setPis(createPIS());
-            d.setCofins(createCOFINS());
-            
-            destinos.add(d);
-        }
-        return destinos;
-    }
+		List<Destino> destinos = new ArrayList<>();
+		for (UF uf : UF.values()) {
+			String cfop = null;
+
+			if (uf.equals(UF.PB)) {
+				cfop = "5102";
+			} else {
+				cfop = "6102";
+			}
+			destinos.add(Destino.builder().estado(uf).cfop(cfop).icms(createICMS()).ipi(createIPI()).pis(createPIS())
+					.cofins(createCOFINS()).build());
+		}
+		return destinos;
+	}
 
     private ICMS createICMS() {
-        ICMS icms = new ICMS();
-        icms.setCstICMS(CST_ICMS.SN_102);
-        icms.setOrigem(Origem.NACIONAL);
-        icms.setModBCICMS(ModBC.OPERACAO);
-        icms.setModBCST(ModBCST.PAUTA);
-        icms.setvBCICMS(BigDecimal.ZERO);        
-        icms.setpICMS(BigDecimal.ZERO);
-        icms.setvICMS(BigDecimal.ZERO);
-        icms.setpMVAST(BigDecimal.ZERO);
-        icms.setpICMSST(BigDecimal.ZERO);
+    	return ICMS.builder()
+        .cstICMS(CST_ICMS.SN_102)
+        .origem(Origem.NACIONAL)
+        .modBCICMS(ModBC.OPERACAO)
+        .modBCST(ModBCST.PAUTA)
+        .vBCICMS(BigDecimal.ZERO)     
+        .pICMS(BigDecimal.ZERO)
+        .vICMS(BigDecimal.ZERO)
+        .pMVAST(BigDecimal.ZERO)
+        .vICMSST(BigDecimal.ZERO)
+        .build();
         
-        return icms;
     }
     
     private IPI createIPI() {
-    	IPI ipi = new IPI();
-        ipi.setCstIPI(CST_IPI.IPI_53);
-        ipi.setcEnq("999");
+    	return IPI.builder()
+        .cstIPI(CST_IPI.IPI_53)
+        .cEnq("999")
+        .build();
         
-        return ipi;
+        
     }
     
     private PIS createPIS() {
-    	PIS pis = new PIS();
-        pis.setCstPIS(CST_PIS.PIS_07);
-        
-        return pis;
+    	return PIS.builder()
+        .cstPIS(CST_PIS.PIS_07)
+        .build();
     }
     
     private COFINS createCOFINS() {
-    	COFINS cofins = new COFINS();
-        cofins.setCstCOFINS(CST_COFINS.COFINS_07);
-        
-        return cofins;
+    	return COFINS.builder()
+        .cstCOFINS(CST_COFINS.COFINS_07)
+        .build();
     }
 }

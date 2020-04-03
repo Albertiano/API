@@ -54,16 +54,19 @@ public class LancamentoService extends BaseService<Lancamento, Long> {
 	public Lancamento novo(Long empresa) {
 		Lancamento last = repository.ultimo(empresa);
 		if (last == null) {
-			last = new Lancamento();
+			last = Lancamento.builder().build();
 		}
-		last.setId(null);
-		last.setDescricao(null);
-		last.setCompetencia(new Date());
-		last.setCreatedAt(new Date());
-		last.setUpdatedAt(new Date());
-		last.setDocumento(null);
-		last.setValor(BigDecimal.ZERO);
-		return last;
+		
+		Lancamento newLanc = last.toBuilder()
+		.descricao(null)
+		.competencia(new Date())
+		.documento(null)
+		.valor(BigDecimal.ZERO)
+		.build();
+		
+		newLanc.setId(null);
+		
+		return newLanc;
 	}
 }
 

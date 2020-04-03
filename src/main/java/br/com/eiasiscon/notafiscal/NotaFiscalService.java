@@ -284,7 +284,7 @@ public class NotaFiscalService extends BaseService<NotaFiscal, Long> {
 	
 	public ItemNotaFiscal getItem(Long idProd, BigDecimal quant, BigDecimal vUn, UF uf) {
 		BigDecimal subtotal = quant.multiply(vUn).setScale(2, RoundingMode.HALF_UP);
-		ItemNotaFiscal i = new ItemNotaFiscal();
+		ItemNotaFiscal i = ItemNotaFiscal.builder().build();
 		i.setProduto(repositoryProd.findById(idProd).get());
 		i.setQuantidade(quant);
 		i.setPrecoVenda(vUn);
@@ -296,10 +296,10 @@ public class NotaFiscalService extends BaseService<NotaFiscal, Long> {
 			i.setPesoLiquido(p.getPesoLiquido().multiply(quant).setScale(2, RoundingMode.HALF_UP));
 		}
 		i.setSubtotal(subtotal);
-		i.setvFrete(BigDecimal.ZERO);
-		i.setvDesc(BigDecimal.ZERO);
-		i.setvSeg(BigDecimal.ZERO);
-		i.setvOutro(BigDecimal.ZERO);
+		i.setVFrete(BigDecimal.ZERO);
+		i.setVDesc(BigDecimal.ZERO);
+		i.setVSeg(BigDecimal.ZERO);
+		i.setVOutro(BigDecimal.ZERO);
 		i.setNoValorNota(false);
 		
 		Destino t = getDestino(p.getTributacao(), uf);	
@@ -310,8 +310,8 @@ public class NotaFiscalService extends BaseService<NotaFiscal, Long> {
 		d.setCfop(t.getCfop());
 		d.setExtipi(p.getExtipi());
 		d.setGenero(p.getGenero());
-		d.setcEan(p.getcEan());
-		d.setcEanTrib(p.getcEanTrib());
+		d.setcEan(p.getCEan());
+		d.setcEanTrib(p.getCEanTrib());
 		if(p.getUtrib()!=null){
 			d.setUtrib(p.getUtrib().getSigla());
 		}		
@@ -321,13 +321,13 @@ public class NotaFiscalService extends BaseService<NotaFiscal, Long> {
 		/**************   IPI  Inicio ****************************/
 		IPI ipi = t.getIpi();
 		if (ipi.getTpCalcIPI() == TpCalcIPI.ALIQUOTA) {
-			ipi.setvBCIPI(i.getSubtotal());
-			ipi.setvIPI(calculoPorcentagem(ipi.getvBCIPI(), ipi.getpIPI()));
+			ipi.setVBCIPI(i.getSubtotal());
+			ipi.setVIPI(calculoPorcentagem(ipi.getVBCIPI(), ipi.getPIPI()));
 		}
 		
 		if (ipi.getTpCalcIPI() == TpCalcIPI.UNIDADE) {
-			ipi.setqUnid(quant.multiply(ipi.getqUnid()));;
-			ipi.setvIPI(ipi.getqUnid().multiply(ipi.getvUnid()));
+			ipi.setQUnid(quant.multiply(ipi.getQUnid()));;
+			ipi.setVIPI(ipi.getQUnid().multiply(ipi.getVUnid()));
 		}
 		d.setIpi(ipi);
 		/**************   IPI   Fim ****************************/
@@ -336,24 +336,24 @@ public class NotaFiscalService extends BaseService<NotaFiscal, Long> {
 		ICMS icms = t.getIcms();
 		
 		if (icms.getModBCICMS() == ModBC.OPERACAO) {
-			icms.setvBCICMS(i.getSubtotal());
-			icms.setvICMS(calculoPorcentagem(icms.getvBCICMS(), icms.getpICMS()));
+			icms.setVBCICMS(i.getSubtotal());
+			icms.setVICMS(calculoPorcentagem(icms.getVBCICMS(), icms.getPICMS()));
 		}		
-		if(ipi.getvIpiBcICMS()){
-			icms.setvBCICMS(icms.getvBCICMS().add(ipi.getvIPI()));
-			icms.setvICMS(calculoPorcentagem(icms.getvBCICMS(), icms.getpICMS()));
+		if(ipi.isVIpiBcICMS()){
+			icms.setVBCICMS(icms.getVBCICMS().add(ipi.getVIPI()));
+			icms.setVICMS(calculoPorcentagem(icms.getVBCICMS(), icms.getPICMS()));
 		}
 
 		if (icms.getModBCST() == ModBCST.OPERACAO) {
-			BigDecimal vAgreg = calculoPorcentagem(subtotal, icms.getpMVAST());
+			BigDecimal vAgreg = calculoPorcentagem(subtotal, icms.getPMVAST());
 
-			icms.setvBCST(subtotal.add(vAgreg));
-			icms.setvICMSST(calculoPorcentagem(icms.getvBCST(),
-			icms.getpICMSST()).subtract(icms.getvICMS()));
+			icms.setVBCST(subtotal.add(vAgreg));
+			icms.setVICMSST(calculoPorcentagem(icms.getVBCST(),
+			icms.getPICMSST()).subtract(icms.getVICMS()));
 		} else {
-			icms.setvBCST(i.getQuantidade().multiply(icms.getvBCST()));
-			icms.setvICMSST(calculoPorcentagem(icms.getvBCST(),
-			icms.getpICMSST()).subtract(icms.getvICMS()));
+			icms.setVBCST(i.getQuantidade().multiply(icms.getVBCST()));
+			icms.setVICMSST(calculoPorcentagem(icms.getVBCST(),
+			icms.getPICMSST()).subtract(icms.getVICMS()));
 		}
 		d.setIcms(icms);
 		/**************   ICMS Fim  **************************/

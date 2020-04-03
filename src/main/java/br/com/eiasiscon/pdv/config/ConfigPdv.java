@@ -1,17 +1,18 @@
 package br.com.eiasiscon.pdv.config;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.empresa.Empresa;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
-public class ConfigPdv extends BaseEntity implements Serializable {
-	
-	private static final long serialVersionUID = -4591790684476266712L;
+@EqualsAndHashCode(callSuper=false)
+@Data
+@Builder(toBuilder=true)
+public class ConfigPdv extends BaseEntity {
 	
 	@ManyToOne
     private Empresa empresa;
@@ -22,48 +23,4 @@ public class ConfigPdv extends BaseEntity implements Serializable {
 	private int numeroNFe;
 	private int serieNFCe;
 	private int numeroNFCe;
-	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public Boolean getIsExterno() {
-		return isExterno;
-	}
-	public void setIsExterno(Boolean isExterno) {
-		this.isExterno = isExterno;
-	}
-	public int getSerieNFe() {
-		return serieNFe;
-	}
-	public void setSerieNFe(int serieNFe) {
-		this.serieNFe = serieNFe;
-	}
-	public int getNumeroNFe() {
-		return numeroNFe;
-	}
-	public void setNumeroNFe(int numeroNFe) {
-		this.numeroNFe = numeroNFe;
-	}
-	public int getSerieNFCe() {
-		return serieNFCe;
-	}
-	public void setSerieNFCe(int serieNFCe) {
-		this.serieNFCe = serieNFCe;
-	}
-	public int getNumeroNFCe() {
-		return numeroNFCe;
-	}
-	public void setNumeroNFCe(int numeroNFCe) {
-		this.numeroNFCe = numeroNFCe;
-	}
-	
 }

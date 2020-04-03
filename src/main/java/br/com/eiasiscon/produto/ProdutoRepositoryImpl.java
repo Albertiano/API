@@ -17,9 +17,6 @@ import org.springframework.data.repository.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
-import br.com.eiasiscon.produto.Produto;
-
-
 @Repository
 public class ProdutoRepositoryImpl implements ProdutoRepositoryCustom{
 	

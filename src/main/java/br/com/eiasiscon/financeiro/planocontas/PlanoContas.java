@@ -7,8 +7,14 @@ import javax.persistence.ManyToOne;
 
 import br.com.eiasiscon.base.BaseEntity;
 import br.com.eiasiscon.empresa.Empresa;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
+@EqualsAndHashCode(callSuper=false)
+@Data
+@Builder(toBuilder=true)
 public class PlanoContas extends BaseEntity {
 
 	@ManyToOne
@@ -17,29 +23,4 @@ public class PlanoContas extends BaseEntity {
 	private String codigo;
 	@Enumerated(EnumType.STRING)
 	private TpConta tpConta;
-	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public String getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
-	}
-	public TpConta getTpConta() {
-		return tpConta;
-	}
-	public void setTpConta(TpConta tpConta) {
-		this.tpConta = tpConta;
-	}
 }

@@ -30,11 +30,11 @@ public class CentroCustosRepositoryImpl implements CentroCustosRepositoryCustom{
 	}
 
 	@Override
-	public Page<CentroCustos> find(String q, Long empresa, Pageable pageable) {
+	public Page<CentroCusto> find(String q, Long empresa, Pageable pageable) {
  
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<CentroCustos> query = cb.createQuery(CentroCustos.class);
-        Root<CentroCustos> from = query.from(CentroCustos.class);
+        CriteriaQuery<CentroCusto> query = cb.createQuery(CentroCusto.class);
+        Root<CentroCusto> from = query.from(CentroCusto.class);
   
 		List<Predicate> predicates = new ArrayList<>();
 				
@@ -52,7 +52,7 @@ public class CentroCustosRepositoryImpl implements CentroCustosRepositoryCustom{
 
 		query.orderBy(cb.asc(from.get("descricao")));
  
-        List<CentroCustos> result = entityManager.createQuery(query).getResultList();
+        List<CentroCusto> result = entityManager.createQuery(query).getResultList();
         
 	    return PageableExecutionUtils.getPage(result, pageable,
 	            () -> result.size());

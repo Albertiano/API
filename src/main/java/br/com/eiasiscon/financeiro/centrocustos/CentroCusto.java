@@ -1,6 +1,4 @@
-package br.com.eiasiscon.financeiro.conta;
-
-import java.math.BigDecimal;
+package br.com.eiasiscon.financeiro.centrocustos;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -15,10 +13,9 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 @Data
 @Builder(toBuilder=true)
-public class Conta extends BaseEntity {
+public class CentroCusto extends BaseEntity {
 	
 	@ManyToOne
     private Empresa empresa;
 	private String descricao;
-	private BigDecimal saldo;
 }

@@ -20,9 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.eiasiscon.produto.unidade.Unidade;
-import br.com.eiasiscon.produto.unidade.UnidadeService;
-
 @CrossOrigin
 @RestController
 @RequestMapping("/unidade")

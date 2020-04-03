@@ -143,7 +143,7 @@ public class NFeService {
 	
 	public NFeDTO enviar(NotaFiscal nf) {
 		String cnpj = nf.getEmpresa().getNumDoc().replaceAll("[^0-9,]", "");
-		String uf = nf.getEmitente().getMunicipio().getUf().toString();
+		String uf = nf.getEmpresa().getMunicipio().getUf().toString();
 		
 		NFeDTO retorno = new NFeDTO();		
 		retorno.setUf(uf);
@@ -297,7 +297,7 @@ public class NFeService {
 
             String xmlProcEventoNFe = CancelamentoUtil.criaProcEventoCancelamento(config, enviEvento, retorno.getRetEvento().get(0));
              
-            ProcEventoNFe procEventoNFe = new ProcEventoNFe();
+            ProcEventoNFe procEventoNFe = ProcEventoNFe.builder().build();
             procEventoNFe.setXmlEvento(xmlProcEventoNFe);
             
             if(nf.getProcEventoNFe() == null) { nf.setProcEventoNFe(new ArrayList<ProcEventoNFe>()); }

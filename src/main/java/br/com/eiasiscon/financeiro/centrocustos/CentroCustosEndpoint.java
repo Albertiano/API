@@ -14,7 +14,7 @@ import br.com.eiasiscon.base.BaseEndpoint;
 @CrossOrigin
 @RestController
 @RequestMapping("/centro-custos")
-public class CentroCustosEndpoint extends BaseEndpoint<CentroCustos, Long> {
+public class CentroCustosEndpoint extends BaseEndpoint<CentroCusto, Long> {
 	
 	@Autowired
 	private CentroCustosService service;
@@ -25,8 +25,8 @@ public class CentroCustosEndpoint extends BaseEndpoint<CentroCustos, Long> {
 	}
 		
 	@GetMapping("/filter")
-	public Page<CentroCustos> procurar(@RequestParam String filter, @RequestParam Long idCompany, Pageable pageable) {
-		Page<CentroCustos> result =  service.find(filter, idCompany, pageable);
+	public Page<CentroCusto> procurar(@RequestParam String filter, @RequestParam Long idCompany, Pageable pageable) {
+		Page<CentroCusto> result =  service.find(filter, idCompany, pageable);
 		return result;
 	}
 

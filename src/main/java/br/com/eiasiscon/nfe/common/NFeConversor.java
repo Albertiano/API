@@ -520,19 +520,19 @@ public class NFeConversor {
                 p90.setOrig(d.getIcms().getOrigem().getValor());
                 p90.setCST(d.getIcms().getCstICMS().getValor());
                 p90.setModBC(d.getIcms().getModBCICMS().getValor());
-                p90.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCICMS()));
-                p90.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCICMS()));
-                p90.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMS()));
-                p90.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMS()));
+                p90.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCICMS()));
+                p90.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCICMS()));
+                p90.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMS()));
+                p90.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMS()));
                 p90.setModBCST(d.getIcms().getModBCST().getValor());
-                p90.setPMVAST(d.getIcms().getpMVAST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpMVAST()) : null);
-                p90.setPRedBCST(d.getIcms().getpRedBCST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCST()) : null);
-                p90.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCST()));
-                p90.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMSST()));
-                p90.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSST()));
-                p90.setPBCOp(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpBCOp()));
+                p90.setPMVAST(d.getIcms().getPMVAST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPMVAST()) : null);
+                p90.setPRedBCST(d.getIcms().getPRedBCST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCST()) : null);
+                p90.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCST()));
+                p90.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMSST()));
+                p90.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSST()));
+                p90.setPBCOp(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPBCOp()));
                 p90.setUFST(TUf.valueOf(d.getIcms().getUFST().toString()));
                 icms.setICMSPart(p90);
                 break;
@@ -540,8 +540,8 @@ public class NFeConversor {
                 ICMSSN101 _101 = new ICMSSN101();
                 _101.setOrig(d.getIcms().getOrigem().getValor());
                 _101.setCSOSN(d.getIcms().getCstICMS().getValor());
-                _101.setPCredSN(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpCredSN()));
-                _101.setVCredICMSSN(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvCredICMSSN()));
+                _101.setPCredSN(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPCredSN()));
+                _101.setVCredICMSSN(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVCredICMSSN()));
                 icms.setICMSSN101(_101);
                 break;
             case SN_102:
@@ -573,15 +573,15 @@ public class NFeConversor {
                 _201.setOrig(d.getIcms().getOrigem().getValor());
                 _201.setCSOSN(d.getIcms().getCstICMS().getValor());
                 _201.setModBCST(d.getIcms().getModBCST().getValor());
-                _201.setPMVAST(d.getIcms().getpMVAST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpMVAST()) : null);
-                _201.setPRedBCST(d.getIcms().getpRedBCST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCST()) : null);
-                _201.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCST()));
-                _201.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMSST()));
-                _201.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSST()));
-                _201.setPCredSN(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpCredSN()));
-                _201.setVCredICMSSN(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvCredICMSSN()));
+                _201.setPMVAST(d.getIcms().getPMVAST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPMVAST()) : null);
+                _201.setPRedBCST(d.getIcms().getPRedBCST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCST()) : null);
+                _201.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCST()));
+                _201.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMSST()));
+                _201.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSST()));
+                _201.setPCredSN(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPCredSN()));
+                _201.setVCredICMSSN(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVCredICMSSN()));
                 icms.setICMSSN201(_201);
                 break;
             case SN_202:
@@ -590,23 +590,23 @@ public class NFeConversor {
                 _202.setCSOSN(d.getIcms().getCstICMS().getValor());
                 _202.setModBCST(d.getIcms().getModBCST().getValor());
                 
-                if(d.getIcms().getpMVAST() == null) {
+                if(d.getIcms().getPMVAST() == null) {
                 	_202.setPMVAST(null);
                 } else {
-                	_202.setPMVAST(d.getIcms().getpMVAST().compareTo(BigDecimal.ZERO) == 1
-                            ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpMVAST()) : null);
+                	_202.setPMVAST(d.getIcms().getPMVAST().compareTo(BigDecimal.ZERO) == 1
+                            ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPMVAST()) : null);
                 }
                 
-                if(d.getIcms().getpRedBCST() == null) {
+                if(d.getIcms().getPRedBCST() == null) {
                 	_202.setPMVAST(null);
                 } else {
-                	_202.setPRedBCST(d.getIcms().getpRedBCST().compareTo(BigDecimal.ZERO) == 1
-                            ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCST()) : null);
+                	_202.setPRedBCST(d.getIcms().getPRedBCST().compareTo(BigDecimal.ZERO) == 1
+                            ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCST()) : null);
                 }
                 
-                _202.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCST()));
-                _202.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMSST()));
-                _202.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSST()));
+                _202.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCST()));
+                _202.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMSST()));
+                _202.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSST()));
                 icms.setICMSSN202(_202);
                 break;
             case SN_203:
@@ -614,13 +614,13 @@ public class NFeConversor {
                 _203.setOrig(d.getIcms().getOrigem().getValor());
                 _203.setCSOSN(d.getIcms().getCstICMS().getValor());
                 _203.setModBCST(d.getIcms().getModBCST().getValor());
-                _203.setPMVAST(d.getIcms().getpMVAST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpMVAST()) : null);
-                _203.setPRedBCST(d.getIcms().getpRedBCST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCST()) : null);
-                _203.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCST()));
-                _203.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMSST()));
-                _203.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSST()));
+                _203.setPMVAST(d.getIcms().getPMVAST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPMVAST()) : null);
+                _203.setPRedBCST(d.getIcms().getPRedBCST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCST()) : null);
+                _203.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCST()));
+                _203.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMSST()));
+                _203.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSST()));
                 icms.setICMSSN202(_203);
                 break;
             case SN_500:
@@ -636,24 +636,24 @@ public class NFeConversor {
                 if (d.getIcms().getModBCICMS() != null) {
                     _900.setModBC(d.getIcms().getModBCICMS().getValor());
                 }
-                _900.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCICMS()));
-                _900.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCICMS()));
-                _900.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMS()));
-                _900.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMS()));
+                _900.setPRedBC(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCICMS()));
+                _900.setVBC(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCICMS()));
+                _900.setPICMS(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMS()));
+                _900.setVICMS(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMS()));
                 if (d.getIcms().getModBCST() != null) {
                     _900.setModBCST(d.getIcms().getModBCST().getValor());
                 }
-                _900.setPMVAST(d.getIcms().getpMVAST().compareTo(BigDecimal.ZERO) == 1
-                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpMVAST()) : null);
-                if (d.getIcms().getpRedBCST() != null) {
-                    _900.setPRedBCST(d.getIcms().getpRedBCST().compareTo(BigDecimal.ZERO) == 1
-                            ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpRedBCST()) : null);
+                _900.setPMVAST(d.getIcms().getPMVAST().compareTo(BigDecimal.ZERO) == 1
+                        ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPMVAST()) : null);
+                if (d.getIcms().getPRedBCST() != null) {
+                    _900.setPRedBCST(d.getIcms().getPRedBCST().compareTo(BigDecimal.ZERO) == 1
+                            ? ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPRedBCST()) : null);
                 }
-                _900.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvBCST()));
-                _900.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpICMSST()));
-                _900.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvICMSST()));
-                _900.setPCredSN(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getpCredSN()));
-                _900.setVCredICMSSN(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getvCredICMSSN()));
+                _900.setVBCST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVBCST()));
+                _900.setPICMSST(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPICMSST()));
+                _900.setVICMSST(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVICMSST()));
+                _900.setPCredSN(ConversorBigDecimal.paraStringNFeAliq(d.getIcms().getPCredSN()));
+                _900.setVCredICMSSN(ConversorBigDecimal.paraStringNFeValor(d.getIcms().getVCredICMSSN()));
                 icms.setICMSSN900(_900);
                 break;
             default:
@@ -666,13 +666,13 @@ public class NFeConversor {
         IPI ip = i.getDetFiscal().getIpi();
         TIpi ipi = new TIpi();
         ipi.setCNPJProd(ip.getCNPJProd());
-        ipi.setCSelo(ip.getcSelo());
-        ipi.setQSelo(ConversorBigDecimal.paraStringNFeQuant(ip.getqSelo()));
+        ipi.setCSelo(ip.getCSelo());
+        ipi.setQSelo(ConversorBigDecimal.paraStringNFeQuant(ip.getQSelo()));
         if (ipi.getQSelo().equals("0")) {
             ipi.setQSelo(null);
         }
-        ipi.setCEnq(ip.getcEnq());
-        if(ip.getcEnq()==null){
+        ipi.setCEnq(ip.getCEnq());
+        if(ip.getCEnq()==null){
             ipi.setCEnq("999");
         }
         CST_IPI CST_IPI = ip.getCstIPI();
@@ -687,68 +687,68 @@ public class NFeConversor {
                 ipiTrib.setCST(ip.getCstIPI().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        ipiTrib.setVBC(ConversorBigDecimal.paraStringNFeValor(ip.getvBCIPI()));
-                        ipiTrib.setPIPI(ConversorBigDecimal.paraStringNFeAliq(ip.getpIPI()));
+                        ipiTrib.setVBC(ConversorBigDecimal.paraStringNFeValor(ip.getVBCIPI()));
+                        ipiTrib.setPIPI(ConversorBigDecimal.paraStringNFeAliq(ip.getPIPI()));
                         break;
                     case UNIDADE:
-                        ipiTrib.setQUnid(ConversorBigDecimal.paraStringNFeQuant(ip.getqUnid()));
-                        ipiTrib.setVUnid(ConversorBigDecimal.paraStringNFePreco(ip.getvUnid()));
+                        ipiTrib.setQUnid(ConversorBigDecimal.paraStringNFeQuant(ip.getQUnid()));
+                        ipiTrib.setVUnid(ConversorBigDecimal.paraStringNFePreco(ip.getVUnid()));
                         break;
                     default:
                         break;
                 }
-                ipiTrib.setVIPI(ConversorBigDecimal.paraStringNFeValor(ip.getvIPI()));
+                ipiTrib.setVIPI(ConversorBigDecimal.paraStringNFeValor(ip.getVIPI()));
                 ipi.setIPITrib(ipiTrib);
                 break;
             case IPI_49:
                 ipiTrib.setCST(ip.getCstIPI().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        ipiTrib.setVBC(ConversorBigDecimal.paraStringNFeValor(ip.getvBCIPI()));
-                        ipiTrib.setPIPI(ConversorBigDecimal.paraStringNFeAliq(ip.getpIPI()));
+                        ipiTrib.setVBC(ConversorBigDecimal.paraStringNFeValor(ip.getVBCIPI()));
+                        ipiTrib.setPIPI(ConversorBigDecimal.paraStringNFeAliq(ip.getPIPI()));
                         break;
                     case UNIDADE:
-                        ipiTrib.setQUnid(ConversorBigDecimal.paraStringNFeQuant(ip.getqUnid()));
-                        ipiTrib.setVUnid(ConversorBigDecimal.paraStringNFePreco(ip.getvUnid()));
+                        ipiTrib.setQUnid(ConversorBigDecimal.paraStringNFeQuant(ip.getQUnid()));
+                        ipiTrib.setVUnid(ConversorBigDecimal.paraStringNFePreco(ip.getVUnid()));
                         break;
                     default:
                         break;
                 }
-                ipiTrib.setVIPI(ConversorBigDecimal.paraStringNFeValor(ip.getvIPI()));
+                ipiTrib.setVIPI(ConversorBigDecimal.paraStringNFeValor(ip.getVIPI()));
                 ipi.setIPITrib(ipiTrib);
                 break;
             case IPI_50:
                 ipiTrib.setCST(ip.getCstIPI().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        ipiTrib.setVBC(ConversorBigDecimal.paraStringNFeValor(ip.getvBCIPI()));
-                        ipiTrib.setPIPI(ConversorBigDecimal.paraStringNFeAliq(ip.getpIPI()));
+                        ipiTrib.setVBC(ConversorBigDecimal.paraStringNFeValor(ip.getVBCIPI()));
+                        ipiTrib.setPIPI(ConversorBigDecimal.paraStringNFeAliq(ip.getPIPI()));
                         break;
                     case UNIDADE:
-                        ipiTrib.setQUnid(ConversorBigDecimal.paraStringNFeQuant(ip.getqUnid()));
-                        ipiTrib.setVUnid(ConversorBigDecimal.paraStringNFePreco(ip.getvUnid()));
+                        ipiTrib.setQUnid(ConversorBigDecimal.paraStringNFeQuant(ip.getQUnid()));
+                        ipiTrib.setVUnid(ConversorBigDecimal.paraStringNFePreco(ip.getVUnid()));
                         break;
                     default:
                         break;
                 }
-                ipiTrib.setVIPI(ConversorBigDecimal.paraStringNFeValor(ip.getvIPI()));
+                ipiTrib.setVIPI(ConversorBigDecimal.paraStringNFeValor(ip.getVIPI()));
                 ipi.setIPITrib(ipiTrib);
                 break;
             case IPI_99:
                 ipiTrib.setCST(ip.getCstIPI().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        ipiTrib.setVBC(ConversorBigDecimal.paraStringNFeValor(ip.getvBCIPI()));
-                        ipiTrib.setPIPI(ConversorBigDecimal.paraStringNFeAliq(ip.getpIPI()));
+                        ipiTrib.setVBC(ConversorBigDecimal.paraStringNFeValor(ip.getVBCIPI()));
+                        ipiTrib.setPIPI(ConversorBigDecimal.paraStringNFeAliq(ip.getPIPI()));
                         break;
                     case UNIDADE:
-                        ipiTrib.setQUnid(ConversorBigDecimal.paraStringNFeQuant(ip.getqUnid()));
-                        ipiTrib.setVUnid(ConversorBigDecimal.paraStringNFePreco(ip.getvUnid()));
+                        ipiTrib.setQUnid(ConversorBigDecimal.paraStringNFeQuant(ip.getQUnid()));
+                        ipiTrib.setVUnid(ConversorBigDecimal.paraStringNFePreco(ip.getVUnid()));
                         break;
                     default:
                         break;
                 }
-                ipiTrib.setVIPI(ConversorBigDecimal.paraStringNFeValor(ip.getvIPI()));
+                ipiTrib.setVIPI(ConversorBigDecimal.paraStringNFeValor(ip.getVIPI()));
                 ipi.setIPITrib(ipiTrib);
                 break;
             case IPI_01:
@@ -813,23 +813,23 @@ public class NFeConversor {
         switch (cst) {
             case PIS_01:
                 pA.setCST(p.getCstPIS().getValor());
-                pA.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                pA.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
-                pA.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pA.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                pA.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
+                pA.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISAliq(pA);
                 break;
             case PIS_02:
                 pA.setCST(p.getCstPIS().getValor());
-                pA.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                pA.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
-                pA.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pA.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                pA.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
+                pA.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISAliq(pA);
                 break;
             case PIS_03:
                 pQ.setCST(p.getCstPIS().getValor());
-                pQ.setQBCProd(ConversorBigDecimal.paraStringNFeQuant(p.getqBCProdPIS()));
-                pQ.setVAliqProd(ConversorBigDecimal.paraStringNFePreco(p.getvAliqProdPIS()));
-                pQ.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pQ.setQBCProd(ConversorBigDecimal.paraStringNFeQuant(p.getQBCProdPIS()));
+                pQ.setVAliqProd(ConversorBigDecimal.paraStringNFePreco(p.getVAliqProdPIS()));
+                pQ.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISQtde(pQ);
                 break;
             case PIS_04:
@@ -860,421 +860,421 @@ public class NFeConversor {
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_50:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_51:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_52:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_53:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_54:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_55:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_56:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_60:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_61:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_62:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_63:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_64:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_65:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_66:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_67:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_70:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_71:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_72:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_73:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_74:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_75:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_98:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
             case PIS_99:
                 pO.setCST(p.getCstPIS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPIS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPIS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPIS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPIS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPIS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPIS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPIS()));
+                pO.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPIS()));
                 pis.setPISOutr(pO);
                 break;
 
@@ -1288,7 +1288,7 @@ public class NFeConversor {
     private static PISST getPISST(ItemNotaFiscal i) {
         br.com.eiasiscon.produto.tributacao.pis.PISST p = i.getDetFiscal().getPisST();
         if (p == null) {
-            p = new br.com.eiasiscon.produto.tributacao.pis.PISST();
+            p = br.com.eiasiscon.produto.tributacao.pis.PISST.builder().build();
         }
         PISST pisST = new PISST();
         TpCalcPIS tpCalc = p.getTpCalcPISST();
@@ -1297,14 +1297,14 @@ public class NFeConversor {
         }
         switch (tpCalc) {
             case ALIQUOTA:
-                pisST.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCPISST()));
-                pisST.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getpPISST()));
-                pisST.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPISST()));
+                pisST.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCPISST()));
+                pisST.setPPIS(ConversorBigDecimal.paraStringNFeAliq(p.getPPISST()));
+                pisST.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPISST()));
                 break;
             case UNIDADE:
-                pisST.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCPISST()));
-                pisST.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdPISST()));
-                pisST.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getvPISST()));
+                pisST.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCPISST()));
+                pisST.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdPISST()));
+                pisST.setVPIS(ConversorBigDecimal.paraStringNFeValor(p.getVPISST()));
                 break;
 
             default:
@@ -1328,23 +1328,23 @@ public class NFeConversor {
         switch (cst) {
             case COFINS_01:
                 pA.setCST(p.getCstCOFINS().getValor());
-                pA.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                pA.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
-                pA.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pA.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                pA.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
+                pA.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSAliq(pA);
                 break;
             case COFINS_02:
                 pA.setCST(p.getCstCOFINS().getValor());
-                pA.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                pA.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
-                pA.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pA.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                pA.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
+                pA.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSAliq(pA);
                 break;
             case COFINS_03:
                 pQ.setCST(p.getCstCOFINS().getValor());
-                pQ.setQBCProd(ConversorBigDecimal.paraStringNFeQuant(p.getqBCProdCOFINS()));
-                pQ.setVAliqProd(ConversorBigDecimal.paraStringNFePreco(p.getvAliqProdCOFINS()));
-                pQ.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pQ.setQBCProd(ConversorBigDecimal.paraStringNFeQuant(p.getQBCProdCOFINS()));
+                pQ.setVAliqProd(ConversorBigDecimal.paraStringNFePreco(p.getVAliqProdCOFINS()));
+                pQ.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSQtde(pQ);
                 break;
             case COFINS_04:
@@ -1375,421 +1375,421 @@ public class NFeConversor {
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_50:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_51:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_52:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_53:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_54:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_55:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_56:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_60:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_61:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_62:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_63:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_64:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
 
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_65:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_66:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_67:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_70:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_71:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_72:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_73:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_74:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_75:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_98:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
             case COFINS_99:
                 pO.setCST(p.getCstCOFINS().getValor());
                 switch (tpCalc) {
                     case ALIQUOTA:
-                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getpCOFINS()));
+                        pO.setVBC(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setPCOFINS(ConversorBigDecimal.paraStringNFeAliq(p.getPCOFINS()));
                         break;
                     case UNIDADE:
-                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getvBCCOFINS()));
-                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getvAliqProdCOFINS()));
+                        pO.setQBCProd(ConversorBigDecimal.paraStringNFeValor(p.getVBCCOFINS()));
+                        pO.setVAliqProd(ConversorBigDecimal.paraStringNFeQuant(p.getVAliqProdCOFINS()));
                         break;
                     default:
                         break;
                 }
-                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getvCOFINS()));
+                pO.setVCOFINS(ConversorBigDecimal.paraStringNFeValor(p.getVCOFINS()));
                 cofins.setCOFINSOutr(pO);
                 break;
 

@@ -66,8 +66,6 @@ public class PopularDadosEndpoint {
 				msg.append(paises.size() + " paises adicionados");
 				msg.append("\n");
 			}
-		}else {
-			msg.append("Já inicializado anteriormente");
 		}
 		
 		if(gerarMun) {
@@ -102,7 +100,7 @@ public class PopularDadosEndpoint {
 			user.setPassword(passwordEncoder.encode("2010"));
 	        
 	        userRepository.save(user);
-	        msg.append("\nUsuario adicionado: " + user.getEmail());
+	        msg.append("\n Usuario adicionado: " + user.getEmail());
 	        msg.append("Senha: 2010");
 	        
 	        List<Municipio> municipios = (List<Municipio>) municipioRepo.findByUf(UF.PB);
@@ -119,6 +117,8 @@ public class PopularDadosEndpoint {
 	        
 	        empresaRepo.save(empresa);
 	        
+		}else {
+			msg.append("Já inicializado anteriormente");
 		}
 		
 

@@ -17,7 +17,6 @@ import org.springframework.data.repository.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
-import br.com.eiasiscon.empresa.Empresa;
 import br.com.eiasiscon.security.user.entity.User;
 
 

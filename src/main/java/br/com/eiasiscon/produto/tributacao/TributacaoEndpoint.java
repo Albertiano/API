@@ -23,8 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.eiasiscon.produto.tributacao.Tributacao;
-import br.com.eiasiscon.produto.tributacao.TributacaoService;
 import br.com.eiasiscon.produto.tributacao.icms.CST_ICMS;
 import br.com.eiasiscon.produto.tributacao.icms.ModBC;
 import br.com.eiasiscon.produto.tributacao.icms.ModBCST;

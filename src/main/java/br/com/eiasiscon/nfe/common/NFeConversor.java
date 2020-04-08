@@ -292,7 +292,7 @@ public class NFeConversor {
         prod.setUTrib(i.getProduto().getUtrib().getSigla());
         prod.setQTrib(ConversorBigDecimal.paraStringNFeQuant(i.getDetFiscal().getqTrib()));
         prod.setCEANTrib(i.getProduto().getCEanTrib());
-        if(i.getProduto().getCEanTrib()==null){
+        if(i.getProduto().getCEanTrib() == null){
             prod.setCEANTrib("");
         }
         prod.setVUnTrib(ConversorBigDecimal.paraStringNFePreco(i.getDetFiscal().getVuntrib()));

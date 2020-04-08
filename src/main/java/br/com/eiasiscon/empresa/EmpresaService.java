@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.eiasiscon.base.BaseService;
 import br.com.eiasiscon.empresa.Empresa;
-import br.com.eiasiscon.empresa.EmpresaRepository;
 
 @Service
 public class EmpresaService extends BaseService<Empresa, Long> {

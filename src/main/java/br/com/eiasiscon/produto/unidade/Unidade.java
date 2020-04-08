@@ -17,5 +17,6 @@ public class Unidade extends BaseEntity {
 	@ManyToOne
     private Empresa empresa;
 	
-	private String sigla, desc;
+	private String sigla;
+	private String descricao;
 }

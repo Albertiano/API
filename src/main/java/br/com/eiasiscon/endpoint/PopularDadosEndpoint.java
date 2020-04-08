@@ -27,10 +27,12 @@ import br.com.eiasiscon.security.user.repository.RoleRepository;
 import br.com.eiasiscon.security.user.repository.UserRepository;
 import br.com.eiasiscon.util.MunicipioXML;
 import br.com.eiasiscon.util.PaisXML;
+import lombok.extern.slf4j.Slf4j;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/init")
+@Slf4j
 public class PopularDadosEndpoint {
 	
 	@Autowired
@@ -60,7 +62,7 @@ public class PopularDadosEndpoint {
 			List<Pais> paises = new PaisXML().realizaLeituraXML();
 			for(Pais p : paises){
 				this.paisRepo.save(p);
-				//System.out.println(p.getxPais());
+				log.info(p.getXPais());
 			}
 			if(paises.size() > 0) {
 				msg.append(paises.size() + " paises adicionados");
@@ -72,7 +74,7 @@ public class PopularDadosEndpoint {
 			List<Municipio> municipios = new MunicipioXML().realizaLeituraXML();
 			for(Municipio m : municipios){
 				this.municipioRepo.save(m);
-				//System.out.println(m.getxMun());
+				log.info(m.getXMun());
 			}
 			if(municipios.size() > 0) {
 				msg.append(municipios.size() + " municipios adicionados");
@@ -81,7 +83,7 @@ public class PopularDadosEndpoint {
 		
 		if(gerarUser) {
 			Privilege pADMIN = Privilege.builder().name("ADMIN").build();
-			// privilegeRepository.save(pADMIN);
+			privilegeRepository.save(pADMIN);
 
 			Role r = Role.builder().name("ADMIN").build();
 
@@ -89,7 +91,7 @@ public class PopularDadosEndpoint {
 			r.setPrivileges(lP);
 			r.getPrivileges().add(pADMIN);
 
-			// roleRepository.save(r);
+			roleRepository.save(r);
 
 			User user = User.builder().roles(new ArrayList<Role>()).build();
 			user.getRoles().add(r);
@@ -119,8 +121,7 @@ public class PopularDadosEndpoint {
 	        
 		}else {
 			msg.append("Já inicializado anteriormente");
-		}
-		
+		}		
 
 		return ResponseEntity.ok(msg.toString());
 	}
